@@ -1,9 +1,12 @@
+"use client"
+
+import { TitleMain } from "@/styles/styledComponents";
 
 
 export default function Home() {
   return (
     <div >
-      <h1>Teste</h1>
+      <TitleMain>Alien Defender Game</TitleMain>
     </div>
   );
 }

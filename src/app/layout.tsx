@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
+"use client" 
 
-
-
-export const metadata: Metadata = {
-  title: "White Corals",
-  description: "Plataforma de compartilhamento de artigos para ajudar a combater o branqueamento de corais",
-};
+import { GlobalStyles } from "@/styles/globalStyles";
 
 export default function RootLayout({
   children,
@@ -15,6 +10,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
+        <GlobalStyles/>
         {children}
       </body>
     </html>
