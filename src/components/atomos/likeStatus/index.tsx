@@ -10,6 +10,7 @@ const Wrapper = styled.button`
     gap: 5px;
     cursor:pointer;
     border-radius: 4px;
+    background-color: transparent;
 
     &:hover{
         background-color: #ece7e7;
