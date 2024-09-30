@@ -19,8 +19,8 @@ const Wrapper = styled.button`
     }
 `
 
-export default function ComentStatus() {
-    const [numComments , setnumComments] = useState(120);
+export default function ComentStatus( numbercomments : number) {
+    const [numComments , setnumComments] = useState(numbercomments);
     const [isSelect , setIsSelect] = useState(false);
     const [clickAgain , setClickAgain] = useState(0);
 

@@ -23,8 +23,8 @@ const Wrapper = styled.button`
 
 `
 
-export default function SaveStatus() {
-    const [isSelect, setIsSelect] = useState(false);
+export default function SaveStatus(saved : boolean) {
+    const [isSelect, setIsSelect] = useState(saved);
 
 
     const handleClick = () => {

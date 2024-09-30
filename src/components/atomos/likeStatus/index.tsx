@@ -19,8 +19,8 @@ const Wrapper = styled.button`
     }
 `
 
-export default function LikeStatus() {
-    const [numLikes , setNumLikes] = useState(120);
+export default function LikeStatus(numberLikes : number) {
+    const [numLikes , setNumLikes] = useState(numberLikes);
     const [isSelect , setIsSelect] = useState(false);
     const [clickAgain , setClickAgain] = useState(0);
 
