@@ -12,3 +12,8 @@ export const TitleMain = styled.h1<propsTitle>`
     color: ${ (prop) => prop.color ? prop.color : "#000"};;
 `
 
+export const TitleDefault = styled.h2<propsTitle>`
+    font-weight: ${ (prop) => prop.weight ? prop.weight : 700};
+    font-size: ${ (prop) => prop.size ? prop.size : '2rem'};;
+    color: ${ (prop) => prop.color ? prop.color : "#000"};;
+`
