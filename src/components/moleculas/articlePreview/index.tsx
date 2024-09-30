@@ -14,11 +14,17 @@ const Wrapper = styled.div`
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 2px 15px 30px rgba(0,0,0,0.2);
+    cursor: pointer;
 
+    h2:hover{
+            color: #5b5bff;
+    }
+    
     @media screen and (max-width:600px) {
         h2{
             font-size: 20px;
         }
+
 
         p{
             font-size: 14px;
@@ -26,7 +32,7 @@ const Wrapper = styled.div`
 
         padding: 16px;
         height: 100%;
-        
+
     }
 `
 
