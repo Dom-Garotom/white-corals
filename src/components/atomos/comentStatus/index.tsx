@@ -4,6 +4,8 @@ import { useState } from "react";
 
 const Wrapper = styled.button`
     display : flex ; 
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
     font-size: 1.2rem;
     padding: 7px;
