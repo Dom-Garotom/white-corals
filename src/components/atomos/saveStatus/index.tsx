@@ -22,8 +22,11 @@ const Wrapper = styled.button`
     }
 
 `
+type prop = {
+    saved: boolean;
+}
 
-export default function SaveStatus(saved : boolean) {
+export default function SaveStatus({saved} : prop) {
     const [isSelect, setIsSelect] = useState(saved);
 
 

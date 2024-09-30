@@ -18,8 +18,11 @@ const Wrapper = styled.button`
         background-color: #ece7e7;
     }
 `
+type prop = {
+    numberLikes: number;
+}
 
-export default function LikeStatus(numberLikes : number) {
+export default function LikeStatus({numberLikes} : prop) {
     const [numLikes , setNumLikes] = useState(numberLikes);
     const [isSelect , setIsSelect] = useState(false);
     const [clickAgain , setClickAgain] = useState(0);

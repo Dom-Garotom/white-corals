@@ -18,9 +18,12 @@ const Wrapper = styled.button`
         background-color: #ece7e7;
     }
 `
+type prop = {
+    numberComent: number;
+}
 
-export default function ComentStatus( numbercomments : number) {
-    const [numComments , setnumComments] = useState(numbercomments);
+export default function ComentStatus( {numberComent}: prop) {
+    const [numComments , setnumComments] = useState(numberComent);
     const [isSelect , setIsSelect] = useState(false);
     const [clickAgain , setClickAgain] = useState(0);
 
