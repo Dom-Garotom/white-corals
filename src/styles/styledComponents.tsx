@@ -27,6 +27,7 @@ export const TagsArticles = styled.p<propsArticles>`
     font-weight: 700;
     font-size: 1rem;
     color:#878A92;
+    padding: 4px 10px;
 
     &::before{
         content: "#";
