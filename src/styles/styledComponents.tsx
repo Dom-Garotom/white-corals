@@ -37,3 +37,32 @@ export const TagsArticles = styled.p<propsArticles>`
         margin-right: 3px ;
     }
 `
+
+type ButtonProps = {
+    secondary?: boolean;
+    lock?: boolean;
+    block ?: boolean
+  };
+  
+
+export const ButtonDefault = styled.button<ButtonProps>`
+    width: 250px;
+    height: 48px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: ${(props) => ( props.secondary ? "#3B6AE1": "#FFF ")};
+    background-color: ${(props) => ( props.secondary ? "#fff" : "#3B6AE1")};
+    border : ${prop => prop.secondary && "solid 2px #3B6AE1" };
+    opacity: ${(props) => (props.lock ? 0.40 : 1)};
+    transition: all 200ms;
+    cursor: ${(props) => (props.lock ? "no-drop" : "pointer")};
+
+
+    &:hover{
+        background-color: ${(props) => ( props.secondary ? "#3B6AE1": "#3158bd ")};
+        color: #fff;
+        transition: all 200ms;
+    }
+`   
