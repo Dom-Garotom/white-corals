@@ -35,7 +35,11 @@ const WrapperHero = styled.section`
 
     @media screen and (max-width: 400px){
         h1{
-            font-size: 3.4rem;
+            font-size: 30px;
+        }
+
+        p{
+            font-size: 16px;
         }
     }
 
