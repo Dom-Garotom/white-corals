@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
-export const TitleMain = styled.h1`
-    font-weight: 700;
-    font-size: 3rem;
-    color: #000;
+type propsTitle = {
+    color ?: string;
+    size ?: string;
+    weight ?: string;
+};
+
+export const TitleMain = styled.h1<propsTitle>`
+    font-weight: ${ (prop) => prop.weight ? prop.weight : 700};
+    font-size: ${ (prop) => prop.size ? prop.size : '3rem'};;
+    color: ${ (prop) => prop.color ? prop.color : "#000"};;
 `
+
