@@ -89,3 +89,22 @@ export const ButtonMenuHeader = styled.button<ButtonProps>`
     transform: ${(props) => (props.$block ? 'translateY(0)' : 'translateY(1rem)')};
     transition: opacity 0.20s ease, transform 0.60s ease;
 `
+
+export const ButtonFilter = styled.button<ButtonProps>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    padding: 7px;
+    gap: 5px;
+    cursor:pointer;
+    border-radius: 4px;
+    background-color: transparent;
+    
+    &:hover{
+        color: #5353ff;
+        background-color: #7070ff26;
+    }
+`
