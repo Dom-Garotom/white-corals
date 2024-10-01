@@ -66,3 +66,26 @@ export const ButtonDefault = styled.button<ButtonProps>`
         transition: all 200ms;
     }
 `   
+
+export const ButtonMenuHeader = styled.button<ButtonProps>`
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #fff;
+    }
+
+    pointer-events: ${(props) => (props.block ? 'auto' : 'none')};
+    display: ${(props) => (props.block ? 'flex' : 'none')};
+    opacity: ${(props) => (props.block ? '1' : '0')};
+    transform: ${(props) => (props.block ? 'translateY(0)' : 'translateY(1rem)')};
+    transition: opacity 0.20s ease, transform 0.60s ease;
+`
