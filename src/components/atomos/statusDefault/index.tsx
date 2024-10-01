@@ -5,9 +5,10 @@ type prop = {
     iconDefault : React.ReactNode,
     iconFull :  React.ReactNode;
     handleFunction ?: () => void;
+    title ?: string;
 }
 
-export default function Statusdefault({ iconDefault , iconFull , handleFunction } : prop) {
+export default function Statusdefault({ iconDefault , iconFull , handleFunction , title } : prop) {
     const [isSelect, setIsSelect] = useState(false);
 
 
@@ -17,7 +18,7 @@ export default function Statusdefault({ iconDefault , iconFull , handleFunction 
 
     return (
         <ButtonFilter onClick={handleFunction}>
-            <span onClick={handleClick}>
+            <span title={title} onClick={handleClick}>
             {isSelect ? (
                 iconDefault
             ) : (
