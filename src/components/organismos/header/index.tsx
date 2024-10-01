@@ -51,7 +51,7 @@ export default function Header() {
                 <Wrapper>
                     {!isVisble &&
                         <div>
-                            <Link href={''}>Home</Link>
+                            <Link href={'/home'}>Home</Link>
                             <Link href={''}>Meus Artigos</Link>
                             <Link href={''}>Publicar artigo</Link>
                         </div>
@@ -65,7 +65,7 @@ export default function Header() {
                         </Link>
                     </span>
 
-                    <ButtonMenuHeader block={isVisble} onClick={() => togglVisibilityMenu()}>
+                    <ButtonMenuHeader $block={isVisble} onClick={() => togglVisibilityMenu()}>
                         <AiOutlineMenu />
                     </ButtonMenuHeader>
 

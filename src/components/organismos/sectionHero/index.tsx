@@ -54,7 +54,7 @@ export default function Hero() {
                 Compartilhe seu conhecimento em um ambiente colaborativo e focado em ajudar os corais. 
                 <b>Poste artigos, perguntas e interaja com uma comunidade</b> que está em busca dos mesmos ideais que você.
             </p>
-            <ButtonDefault secondary>Criar postagem</ButtonDefault>
+            <ButtonDefault $secondary>Criar postagem</ButtonDefault>
         </WrapperHero>
     )
 }

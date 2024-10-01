@@ -39,9 +39,9 @@ export const TagsArticles = styled.p<propsArticles>`
 `
 
 type ButtonProps = {
-    secondary?: boolean;
-    lock?: boolean;
-    block ?: boolean
+    $secondary?: boolean;
+    $lock?: boolean;
+    $block ?: boolean
   };
   
 
@@ -52,16 +52,16 @@ export const ButtonDefault = styled.button<ButtonProps>`
     border-radius: 4px;
     font-weight: 700;
     font-size: 1.2rem;
-    color: ${(props) => ( props.secondary ? "#3B6AE1": "#FFF ")};
-    background-color: ${(props) => ( props.secondary ? "#fff" : "#3B6AE1")};
-    border : ${prop => prop.secondary && "solid 2px #3B6AE1" };
-    opacity: ${(props) => (props.lock ? 0.40 : 1)};
+    color: ${(props) => ( props.$secondary ? "#3B6AE1": "#FFF ")};
+    background-color: ${(props) => ( props.$secondary ? "#fff" : "#3B6AE1")};
+    border : ${prop => prop.$secondary && "solid 2px #3B6AE1" };
+    opacity: ${(props) => (props.$lock ? 0.40 : 1)};
     transition: all 200ms;
-    cursor: ${(props) => (props.lock ? "no-drop" : "pointer")};
+    cursor: ${(props) => (props.$lock ? "no-drop" : "pointer")};
 
 
     &:hover{
-        background-color: ${(props) => ( props.secondary ? "#3B6AE1": "#3158bd ")};
+        background-color: ${(props) => ( props.$secondary ? "#3B6AE1": "#3158bd ")};
         color: #fff;
         transition: all 200ms;
     }
@@ -83,9 +83,9 @@ export const ButtonMenuHeader = styled.button<ButtonProps>`
         background-color: #fff;
     }
 
-    pointer-events: ${(props) => (props.block ? 'auto' : 'none')};
-    display: ${(props) => (props.block ? 'flex' : 'none')};
-    opacity: ${(props) => (props.block ? '1' : '0')};
-    transform: ${(props) => (props.block ? 'translateY(0)' : 'translateY(1rem)')};
+    pointer-events: ${(props) => (props.$block ? 'auto' : 'none')};
+    display: ${(props) => (props.$block ? 'flex' : 'none')};
+    opacity: ${(props) => (props.$block ? '1' : '0')};
+    transform: ${(props) => (props.$block ? 'translateY(0)' : 'translateY(1rem)')};
     transition: opacity 0.20s ease, transform 0.60s ease;
 `
