@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import { useState } from "react";
 const Wrapper = styled.div`
 
     display: flex;
@@ -21,11 +21,12 @@ const Wrapper = styled.div`
       z-index: 1111;
       margin-left: 30px;
       padding: 2px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       transition: 0.3s ease;
       pointer-events: none;
       background-color: #fff;
       color : #343030;
+      transform: translateY(0); 
     }
       
     input {
@@ -50,7 +51,6 @@ const Wrapper = styled.div`
   
       &:focus + label,
       &:valid + label {
-        transform: translateY(-22px);
         font-size: 0.8rem;
         color: #3b6ae1;
       }
@@ -65,11 +65,19 @@ interface InputDefaultProps extends React.InputHTMLAttributes<HTMLElement> {
 
 
 export default function InputDefault({ label, icon, ...props }: InputDefaultProps) {
+  const [isFocus , setIsFocus] = useState(false);
+
+  // verificar se o input está vázio ou não para manter o label no topo 
+  
     return (
         <Wrapper>
             {icon}
-            <input {...props} required />
-            <label htmlFor={props.id}>{label}</label>
+            <input {...props} 
+              onFocus={ () => setIsFocus(true)}
+              required />
+            <label htmlFor={props.id} style={ { transform : isFocus || props.value ? 'translateY(-22px)' : 'translateY(0px)'} }>
+              {label}
+            </label>
         </Wrapper>
     )
 }
