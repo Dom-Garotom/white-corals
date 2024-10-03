@@ -38,7 +38,7 @@ export const TagsArticles = styled.p<propsArticles>`
     }
 `
 
-type ButtonProps = {
+interface ButtonProps extends HTMLButtonElement{
     $secondary?: boolean;
     $lock?: boolean;
     $block ?: boolean
