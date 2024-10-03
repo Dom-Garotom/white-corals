@@ -60,7 +60,7 @@ const WrapperMarkBox = styled.div`
   }
 `
 
-export default function Login() {
+export default function SignUp() {
   return (
     <Wrapper>
 
