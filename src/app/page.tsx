@@ -4,7 +4,7 @@ import Footer from "@/components/moleculas/footer";
 import BackGround from "@/public/backGround-login.png"
 import InfoEvent from "@/components/moleculas/infoEvent";
 import SignUp from "@/components/organismos/signUp";
-
+import { Toaster } from "sonner";
 
 const WrapperMain = styled.main`
   background-image: url(${BackGround.src});
@@ -37,6 +37,13 @@ export default function SignUpPage() {
       <WrapperMain>
         <InfoEvent/>
         <SignUp/>
+        <Toaster toastOptions={{
+          style : {
+            padding : "10px",
+            fontSize: "1.2rem",
+            color: "green",
+          }}
+        }/>
 
       </WrapperMain>
       <Footer/>
