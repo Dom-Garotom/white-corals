@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Footer from "@/components/moleculas/footer";
 import BackGround from "@/public/backGround-login.png"
 import InfoEvent from "@/components/moleculas/infoEvent";
-import Login from "@/components/organismos/signUp";
+import SignUp from "@/components/organismos/signUp";
 
 
 const WrapperMain = styled.main`
@@ -23,8 +23,6 @@ const WrapperMain = styled.main`
     flex-direction: column;
   }
 
-
-
 `
 
 const Wrapper = styled.body`
@@ -38,7 +36,7 @@ export default function SignUpPage() {
     <Wrapper>
       <WrapperMain>
         <InfoEvent/>
-        <Login/>
+        <SignUp/>
 
       </WrapperMain>
       <Footer/>
