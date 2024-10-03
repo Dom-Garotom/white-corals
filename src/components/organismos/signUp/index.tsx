@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
   border-radius: 15px;
   background-color: #ffffff;
   padding: 20px 40px;
@@ -37,6 +37,10 @@ const Wrapper = styled.div`
     &:hover{
     text-decoration: underline;
     }
+  }
+
+  button{
+    width:100%;
   }
 
   button a {
@@ -98,7 +102,7 @@ export default function SignUp() {
         <Link href={"/home"}>Participar do Evento</Link>
        </ButtonDefault>
 
-       <p>Já tem uma conta? <Link href={"/"} >Acesse agora</Link></p>
+       <p>Já tem uma conta? <Link href={"/login"} >Acesse agora</Link></p>
 
 
     </Wrapper>
