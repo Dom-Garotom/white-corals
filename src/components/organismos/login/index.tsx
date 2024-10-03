@@ -68,9 +68,13 @@ const WrapperMarkBox = styled.div`
   }
 `
 
+const regex : RegExp = /^(?=.*[A-Z])(?=.*[0-9])(?=.*\.).{6,}$/
+
 const FormSchema = z.object({
-  email: z.string().email("Email invalido"),
-  senha: z.string().min(8, "Minimo de 8 digitos"),
+  email: z.string().email({message : "Email invalido"}),
+  senha: z.string()
+    .min(8, { message : "Minimo de 8 digitos"})
+    .regex( regex ,{ message : "A senha deve ter pelo menos um digito com letra maiúscula um número e um ponto. "}),
   rememberMe: z.boolean(),
 })
 
