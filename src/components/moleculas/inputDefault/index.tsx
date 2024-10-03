@@ -1,5 +1,5 @@
 import { Wrapper , WrapperContainer , ErrorP } from "./styled-Input";
-import { UseFormRegisterReturn } from "react-hook-form";
+import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 import { useState } from "react";
 
 
@@ -8,7 +8,7 @@ interface InputDefaultProps extends React.InputHTMLAttributes<HTMLElement> {
   label: string;
   icon: React.ReactNode;
   InputError?: boolean;
-  mensageError?: string;
+  mensageError?: FieldError;
   register?: UseFormRegisterReturn;
 }
 
@@ -27,7 +27,6 @@ export default function InputDefault({ label, icon, InputError, mensageError , r
           onFocus={() => setIsFocus(true)}
           {...register}
           {...props}
-          required 
           />
 
         <label 
@@ -40,12 +39,10 @@ export default function InputDefault({ label, icon, InputError, mensageError , r
         </label>
 
       </Wrapper>
-
-      {InputError && 
+      
         <ErrorP>
-          {mensageError}
+          {mensageError?.message}
         </ErrorP>
-      }
 
     </WrapperContainer>
   )
