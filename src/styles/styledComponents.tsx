@@ -37,13 +37,11 @@ export const TagsArticles = styled.p<propsArticles>`
         margin-right: 3px ;
     }
 `
-
-interface ButtonProps extends HTMLButtonElement{
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     $secondary?: boolean;
     $lock?: boolean;
-    $block ?: boolean
-  };
-  
+    $block?: boolean;
+}
 
 export const ButtonDefault = styled.button<ButtonProps>`
     width: 250px;
