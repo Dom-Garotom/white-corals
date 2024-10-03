@@ -7,8 +7,11 @@ import Link from "next/link";
 import LogoCorais from "@/public/logo-corais.png"
 import Image from "next/image";
 import { FaLock } from "react-icons/fa";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -65,44 +68,71 @@ const WrapperMarkBox = styled.div`
   }
 `
 
+const FormSchema = z.object({
+  email: z.string().email("Email invalido"),
+  senha: z.string().min(8, "Minimo de 8 digitos"),
+  rememberMe: z.boolean(),
+})
+
+
+type FormSchema = z.infer<typeof FormSchema>
+
 export default function Login() {
-    return (
-        <Wrapper>
-
-            <Image src={LogoCorais} alt="Logo dos corais" />
-
-            <TitleDefault size="1.6rem">Como é bom te ver denovo</TitleDefault>
-            <p>O evento já tem mais de 521 artigos escritos desde a sua partida </p>
+  const { register, handleSubmit, formState: { errors } } = useForm<FormSchema>({
+    resolver: zodResolver(FormSchema),
+  });
 
 
-            <InputDefault
-                icon={<MdEmail />}
-                label="Seu email"
-                type="email"
-            />
-
-            <InputDefault
-                icon={<FaLock />}
-                label="Sua Senha"
-                type="password"
-            />
-
-            <WrapperMarkBox>
-                <input type="checkbox" name="" id="" />
-                <p>Me mantenha logado</p>
-            </WrapperMarkBox>
-
-            <ButtonDefault>
-                <Link href={"/home"}>Entrar</Link>
-            </ButtonDefault>
-
-            <p>Não tem uma conta? <Link href={"/"} >Crie uma agora</Link></p>
-            <Link href={"/"} >Esqueceu a sua senha?</Link>
+  const handleinformation: SubmitHandler<FormSchema> = (data) => {
+    console.log("Form data:", data);
+  }
 
 
 
-        </Wrapper>
-    );
+  return (
+    <Wrapper onSubmit={handleSubmit(handleinformation)} >
+
+      <Image src={LogoCorais} alt="Logo dos corais" />
+
+      <TitleDefault size="1.6rem">Como é bom te ver denovo</TitleDefault>
+      <p>O evento já tem mais de 521 artigos escritos desde a sua partida </p>
+
+
+      <InputDefault
+        label="Seu email"
+        type="email"
+        register={register("email", { required: true })}
+        InputError={errors.email && true}
+        mensageError={errors.email}
+        icon={<MdEmail />}
+      />
+
+      <InputDefault
+        label="Sua Senha"
+        type="password"
+        register={register("senha")}
+        InputError={errors.senha && true}
+        mensageError={errors.senha}
+        icon={<FaLock />}
+      />
+
+      <WrapperMarkBox>
+        <input type="checkbox" {...register("rememberMe")} id="rememberMe" />
+        <p>Me mantenha logado</p>
+      </WrapperMarkBox>
+
+      <ButtonDefault
+        type="submit"
+      >
+        Entrar
+      </ButtonDefault>
+
+
+      <p>Não tem uma conta? <Link href={"/"} >Crie uma agora</Link></p>
+      <Link href={"/"} >Esqueceu a sua senha?</Link>
+
+    </Wrapper>
+  );
 
 
 }
