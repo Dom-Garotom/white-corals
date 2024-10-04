@@ -96,7 +96,15 @@ const ArticleSchema = z.object({
   id: z.string(),
   title: z.string(),
   article: z.string(),
-  tags: z.string(),
+  tags: z.string().transform((tags) =>
+    tags.split(",").map(tag => ({
+      color: "#ffcc00", 
+      content: tag.trim()
+    }))
+  ),
+  likes: z.number(),
+  comentarios: z.number(),
+  saved: z.boolean(),
 })
 
 type ArticleSchema = z.infer<typeof ArticleSchema>;
@@ -109,6 +117,16 @@ export default function NewPost() {
 
     const dataObject = data;
     dataObject.id = String(self.crypto.randomUUID());
+    dataObject.likes = 0 ;
+    dataObject.comentarios = 0;
+    dataObject.saved = false;
+    
+  
+    dataObject.tags = Array.isArray(dataObject.tags) ? dataObject.tags.map((tag, index) => ({
+      ...tag,
+      color: index % 2 === 0 ? "#ffcc00" : "#00ffcc", 
+    })) : [];
+
 
     const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
     let storage : ArticleSchema[] = []; 
