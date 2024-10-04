@@ -4,6 +4,7 @@ import Footer from "@/components/moleculas/footer";
 import BackGround from "@/public/backGround-login.png"
 import InfoEvent from "@/components/moleculas/infoEvent";
 import Login from "@/components/organismos/login";
+import { Toaster } from "sonner";
 
 
 const WrapperMain = styled.main`
@@ -37,11 +38,18 @@ export default function LoginPage() {
   return (
     <Wrapper>
       <WrapperMain>
-        <InfoEvent/>
-        <Login/>
-
+        <InfoEvent />
+        <Login />
+        <Toaster toastOptions={{
+          style: {
+            padding: "10px",
+            fontSize: "1.2rem",
+            color: "green",
+          }
+        }
+        }/>
       </WrapperMain>
-      <Footer/>
+      <Footer />
     </Wrapper>
   );
 

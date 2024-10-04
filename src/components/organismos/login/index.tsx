@@ -10,6 +10,8 @@ import { FaLock } from "react-icons/fa";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const Wrapper = styled.form`
   display: flex;
@@ -82,13 +84,32 @@ const FormSchema = z.object({
 type FormSchema = z.infer<typeof FormSchema>
 
 export default function Login() {
+  const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm<FormSchema>({
     resolver: zodResolver(FormSchema),
   });
 
 
   const handleinformation: SubmitHandler<FormSchema> = (data) => {
-    console.log("Form data:", data);
+    console.log(data);
+
+    const getUser = localStorage.getItem("user");
+    const users : FormSchema[] = getUser ? JSON.parse(getUser) : [];
+
+    
+    const handleEmail = users.find( ( p : FormSchema ) => p.email === data.email) 
+    const handleSenha = users.find( ( p : FormSchema ) => p.senha === data.senha) 
+
+
+    if ( handleEmail && handleSenha){
+      toast.success("Sua conta foi criada com sucesso");
+  
+      router.push('/home');
+
+    } else {
+      toast.error("seu email ou senha estão incorretas");
+    }
+
   }
 
 
