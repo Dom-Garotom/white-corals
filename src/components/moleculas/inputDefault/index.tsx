@@ -10,17 +10,18 @@ interface InputDefaultProps extends React.InputHTMLAttributes<HTMLElement> {
   InputError?: boolean;
   mensageError?: FieldError;
   register?: UseFormRegisterReturn;
+  borderColor?: string;
 }
 
 
-export default function InputDefault({ label, icon, InputError, mensageError , register ,...props }: InputDefaultProps) {
+export default function InputDefault({ label, icon, InputError, mensageError , register , borderColor ,...props }: InputDefaultProps) {
   const [isFocus, setIsFocus] = useState(false);
 
 
   return (
-    <WrapperContainer>
+    <WrapperContainer >
 
-      <Wrapper $InputError={InputError}>
+      <Wrapper $InputError={InputError}  $borderColor={borderColor}>
         {icon}
 
         <input 

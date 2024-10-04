@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 type propsInput = {
   $InputError?: boolean;
+  $borderColor?: string;
 }
 
 export const Wrapper = styled.div<propsInput>`
@@ -9,7 +10,7 @@ export const Wrapper = styled.div<propsInput>`
     display: flex;
     align-items: center;
     padding: 5px 0px;
-    max-width: 500px;
+    max-width: 650px;
     width: 100%;      
 
     svg{
@@ -37,7 +38,7 @@ export const Wrapper = styled.div<propsInput>`
       display: flex;
       flex: 1;
       height: 45px;
-      max-width: 500px;
+      max-width: 650px;
       width: 100%;
       font-size: 1rem;
       padding: 30px;
@@ -50,18 +51,18 @@ export const Wrapper = styled.div<propsInput>`
       
       &:focus,
       &:valid {
-        border: 2px solid ${props => props.$InputError ? "#e13b57" : "#3b6ae1"};
+        border: 2px solid ${props => props.$InputError ? "#e13b57" : ( props.$borderColor || "#3b6ae1")};
       }
   
       &:focus + label,
       &:valid + label {
         font-size: 0.8rem;
-        color: ${props => props.$InputError ? "#e13b57" : "#3b6ae1"};
+        color: ${props => props.$InputError ? "#e13b57" : ( props.$borderColor || "#3b6ae1")};
       }
 
      
   }
-`
+` 
 
 export const WrapperContainer = styled.div`
   width: 100%;
