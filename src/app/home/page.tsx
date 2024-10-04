@@ -76,108 +76,72 @@ const Wrapper = styled.div`
 
 
 export default function ArticleHome() {
-  const articles = [
+  const dataObjects = [
     {
-      title: "O branqueamento dos corais na área sul do país é uma ameaça iminente",
-      tags: [
-        { color: "#fff700", content: "Corais" },
-        { color: "#036eda", content: "Branqueamento" },
-        { color: "#00f400", content: "Sul do país" },
-        { color: "#ff1100", content: "Corais brancos" },
-      ],
-      likes: 120,
-      comentarios: 5,
-      saved: true,
+        id: "1a2b3c4d-5e6f-7g8h-9i0j-k1l2m3n4o5p6", // UUID gerado
+        title: "A Importância da Sustentabilidade",
+        article: "Neste artigo, discutiremos as práticas sustentáveis que podem ser adotadas para preservar o meio ambiente.",
+        tags: [
+            { color: "#ffcc00", content: "Sustentabilidade" },
+            { color: "#00ffcc", content: "Meio Ambiente" },
+            { color: "#ff6699", content: "Desenvolvimento" },
+        ],
+        likes: 120,
+        comentarios: 45,
+        saved: true,
     },
     {
-      title: "Mudanças climáticas e os impactos nos ecossistemas marinhos",
-      tags: [
-        { color: "#00aaff", content: "Mudanças climáticas" },
-        { color: "#ff9900", content: "Ecossistemas" },
-        { color: "#00ff00", content: "Oceanos" },
-      ],
-      likes: 85,
-      comentarios: 8,
-      saved: false,
+        id: "2b3c4d5e-6f7g-8h9i-0j1k-l2m3n4o5p6q7", // UUID gerado
+        title: "Tecnologias Emergentes",
+        article: "As tecnologias emergentes estão mudando a forma como vivemos e trabalhamos. Vamos explorar algumas delas.",
+        tags: [
+            { color: "#ff6699", content: "Tecnologia" },
+            { color: "#00ccff", content: "Inovação" },
+            { color: "#ffcc00", content: "Futuro" },
+        ],
+        likes: 75,
+        comentarios: 10,
+        saved: false,
     },
     {
-      title: "A importância da preservação das tartarugas marinhas",
-      tags: [
-        { color: "#33cc33", content: "Tartarugas" },
-        { color: "#ffcc00", content: "Preservação" },
-        { color: "#0066ff", content: "Mar" },
-      ],
-      likes: 200,
-      comentarios: 12,
-      saved: true,
+        id: "3c4d5e6f-7g8h-9i0j-k1l2-m3n4o5p6q7r8", // UUID gerado
+        title: "A História da Programação",
+        article: "A programação evoluiu rapidamente ao longo das décadas. Vamos revisar sua história e impacto.",
+        tags: [
+            { color: "#00ffcc", content: "Programação" },
+            { color: "#ff6699", content: "História" },
+            { color: "#ffcc00", content: "Educação" },
+        ],
+        likes: 200,
+        comentarios: 100,
+        saved: true,
     },
     {
-      title: "A poluição dos mares e suas consequências",
-      tags: [
-        { color: "#ff3333", content: "Poluição" },
-        { color: "#00ccff", content: "Mares" },
-        { color: "#cc00cc", content: "Consequências" },
-      ],
-      likes: 95,
-      comentarios: 4,
-      saved: false,
+        id: "4d5e6f7g-8h9i-0j1k-l2m3-n4o5p6q7r8s9", // UUID gerado
+        title: "O Impacto das Mídias Sociais",
+        article: "As mídias sociais têm um papel significativo na sociedade moderna. Vamos discutir os prós e contras.",
+        tags: [
+            { color: "#ffcc00", content: "Mídias Sociais" },
+            { color: "#00ccff", content: "Comunicação" },
+            { color: "#ff6699", content: "Sociedade" },
+        ],
+        likes: 150,
+        comentarios: 30,
+        saved: false,
     },
-    {
-      title: "Como as cidades costeiras estão se adaptando às mudanças do clima",
-      tags: [
-        { color: "#ff6600", content: "Cidades costeiras" },
-        { color: "#0066cc", content: "Adaptação" },
-        { color: "#00cc99", content: "Mudanças climáticas" },
-      ],
-      likes: 150,
-      comentarios: 10,
-      saved: true,
-    },
-    {
-      title: "Os corais e sua importância para a biodiversidade marinha",
-      tags: [
-        { color: "#ffccff", content: "Biodiversidade" },
-        { color: "#3300cc", content: "Corais" },
-        { color: "#ffcc00", content: "Ecossistemas" },
-      ],
-      likes: 175,
-      comentarios: 6,
-      saved: true,
-    },
-    {
-      title: "Impactos da pesca excessiva nos oceanos",
-      tags: [
-        { color: "#ff9900", content: "Pesca excessiva" },
-        { color: "#0033ff", content: "Oceanos" },
-        { color: "#00ff00", content: "Sustentabilidade" },
-      ],
-      likes: 65,
-      comentarios: 3,
-      saved: false,
-    },
-    {
-      title: "O papel das algas na saúde dos oceanos",
-      tags: [
-        { color: "#00ccff", content: "Algas" },
-        { color: "#00ff99", content: "Saúde marinha" },
-        { color: "#ff3300", content: "Ecosistema" },
-      ],
-      likes: 110,
-      comentarios: 7,
-      saved: true,
-    },
-    {
-      title: "Desenvolvimento sustentável e a proteção dos mares",
-      tags: [
-        { color: "#ffcc00", content: "Desenvolvimento sustentável" },
-        { color: "#00ffcc", content: "Proteção" },
-        { color: "#ff6699", content: "Mares" },
-      ],
-      likes: 95,
-      comentarios: 9,
-      saved: false,
-    },
-  ];
+];
+
+  
+  const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+
+  let  dataLocalStorage = [];
+
+  dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+
+  dataObjects.map( elemnt =>{
+    dataLocalStorage.push(elemnt);
+  })
+
 
   const [isVisble, setIsVisible] = useState(Boolean);
 
@@ -218,7 +182,7 @@ export default function ArticleHome() {
 
         <WrapperArticles>
 
-          {articles.map((article, index) => (
+          {dataLocalStorage.map((article, index) => (
             <ArticlePreview
               key={index}
               title={article.title}
