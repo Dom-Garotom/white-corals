@@ -53,7 +53,7 @@ export default function Header() {
                         <div>
                             <Link href={'/home'}>Home</Link>
                             <Link href={''}>Meus Artigos</Link>
-                            <Link href={''}>Publicar artigo</Link>
+                            <Link href={'/newPost'}>Publicar artigo</Link>
                         </div>
                     }
 
@@ -72,9 +72,9 @@ export default function Header() {
                 </Wrapper>
             </WrapperContainer>
             <WrapperMenu block={menuIsVisible}>
-                <Link href={''}>Home</Link>
+                <Link href={'/home'}>Home</Link>
                 <Link href={''}>Meus Artigos</Link>
-                <Link href={''}>Publicar artigo</Link>
+                <Link href={'/newPost'}>Publicar artigo</Link>
             </WrapperMenu>
 
         </WrapperHeader>
