@@ -1,37 +1,18 @@
 "use client"
-import styled from "styled-components";
-import BackGround from "@/public/backGround-login.png"
+
+import { WrapperBody, WrapperImageContainer, WrapperMain } from "./styled";
 import Header from "@/components/organismos/header";
 import InputDefault from "@/components/moleculas/inputDefault";
-import { ButtonDefault, TitleDefault } from "@/styles/styledComponents";
+import { TitleDefault } from "@/styles/styledComponents";
 import Link from "next/link";
+import { SubmitHandler, useForm } from "react-hook-form";
+import styled from "styled-components"
+import { z } from "zod";
+import { Toaster , toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 
-const WrapperBody = styled.body`
-  footer{
-    margin: 0px;
-  }
-`
-
-const WrapperMain = styled.main`
-  background-image: url(${BackGround.src});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  min-block-size: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  padding: 20px;
-
-  @media screen and (max-width: 800px) {
-    flex-direction: column;
-  }
-`
-
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   min-block-size: 80vh;
@@ -82,6 +63,22 @@ const Wrapper = styled.div`
     padding: 20px;
   }
 
+  button.buttonSubmit{
+    width: 250px;
+    height: 48px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #FFF ;
+    background-color:#3B6AE1;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #3158bc;
+    }
+  }
+
 
   @media screen and (max-width: 500px) {
     padding: 20px 20px;
@@ -95,44 +92,54 @@ const Wrapper = styled.div`
   }
 `
 
-const WrapperImageContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 650px;
-  width: 100%;
-  height: 200px;
-  border: 2px dashed #000;
-  border-radius: 10px;
+const ArticleSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  article: z.string(),
+  tags: z.string(),
+})
 
-  button{
-    max-width: 167px;
-    width: 100%;
-    height: 50px;
-    color: #171717;
-    font-weight: 600;
-    background-color: #fff;
-    border: 2px solid #D6D6D7;
-    padding: 10px;
-    border-radius: 7px;
-    cursor: pointer;
-
-    &:hover{
-      background-color: #dddde6;
-    }
-  }
-  
-
-
-`
-
+type ArticleSchema = z.infer<typeof ArticleSchema>;
 
 export default function NewPost() {
+  const router = useRouter();
+  const { register, handleSubmit } = useForm<ArticleSchema>();
+
+  const handleInformation: SubmitHandler<ArticleSchema> = (data) => {
+
+    const dataObject = data;
+    dataObject.id = String(self.crypto.randomUUID());
+
+    const getLocalStorage = localStorage.getItem("article");
+    let storage : ArticleSchema[] = []; 
+
+    storage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+
+    storage.push(dataObject);
+
+    localStorage.setItem("article", JSON.stringify(storage));
+    
+    toast.success("Post criado com sucesso")
+
+    router.push("/home");
+  }
+
+
   return (
     <WrapperBody>
       <Header />
       <WrapperMain>
-        <Wrapper>
+
+        <Toaster toastOptions={{
+          style: {
+            padding: "10px",
+            fontSize: "1.2rem",
+            color: "green",
+          }
+        }
+        } />
+
+        <Wrapper onSubmit={handleSubmit(handleInformation)}>
 
           <WrapperImageContainer>
             <button>Adicionar Imagem</button>
@@ -145,6 +152,7 @@ export default function NewPost() {
             label=""
             type="text"
             borderColor="#000"
+            register={register("title")}
           />
 
           <TitleDefault size="1.2rem">Adicionar tag</TitleDefault>
@@ -155,20 +163,21 @@ export default function NewPost() {
             label=""
             type="text"
             borderColor="#000"
+            register={register("tags")}
           />
 
-          <textarea name="" id="" placeholder="Artigo aqui..." />
+          <textarea placeholder="Artigo aqui..."  {...register("article")} />
 
           <p>
-            Nosso Criador de Post é uma ferramenta exclusiva para escritores que permite a criação de artigos utilizando a  
-              <Link 
-              target="_blanck" 
+            Nosso Criador de Post é uma ferramenta exclusiva para escritores que permite a criação de artigos utilizando a
+            <Link
+              target="_blanck"
               href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">
-                linguagem de Markdown (MD).
-              </Link>
+              linguagem de Markdown (MD).
+            </Link>
           </p>
 
-          <ButtonDefault>Post</ButtonDefault>
+          <button className="buttonSubmit" type="submit">Post</button>
 
         </Wrapper>
 
