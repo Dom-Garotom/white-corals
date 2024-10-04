@@ -110,7 +110,7 @@ export default function NewPost() {
     const dataObject = data;
     dataObject.id = String(self.crypto.randomUUID());
 
-    const getLocalStorage = localStorage.getItem("article");
+    const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
     let storage : ArticleSchema[] = []; 
 
     storage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
