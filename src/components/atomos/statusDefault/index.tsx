@@ -17,24 +17,26 @@ type prop = {
     number?: number;
 }
 
-export default function Statusdefault({ iconDefault, iconFull, handleFunction, title, number }: prop) {
-    const [numLikes , setNumLikes] = useState(number ? number : 0);
+export default function Statusdefault({ iconDefault, iconFull, handleFunction, title, number}: prop) {
+    const [numLikes , setNumLikes] = useState(number);
     const [isSelect , setIsSelect] = useState(false);
     const [clickAgain , setClickAgain] = useState(0);
 
 
     const handleClick = () =>{
         if (clickAgain != 0 && isSelect){
-            setNumLikes(numLikes - 1);
+            setNumLikes(numLikes => numLikes - 1);
             setClickAgain(0);
             setIsSelect(!isSelect);
+            console.log(numLikes)
             return;
         }
 
         if (!isSelect){
-            setNumLikes(numLikes + 1);
+            setNumLikes( numLikes => numLikes + 1);
             setIsSelect(!isSelect);
             setClickAgain(clickAgain + 1);
+            console.log(numLikes)
             return;
         }
     }
@@ -52,7 +54,7 @@ export default function Statusdefault({ iconDefault, iconFull, handleFunction, t
                     )}
                 </span>
             </ButtonFilter>
-            {number && numLikes}
+            {numLikes !== undefined ? numLikes : ""}
         </Wrapper>
     )
 }
