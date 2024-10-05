@@ -25,7 +25,9 @@ export default function Statusdefault({ iconDefault, iconFull, handleFunction, t
 
     const handleClick = () =>{
         if (clickAgain != 0 && isSelect){
-            setNumLikes(numLikes => numLikes - 1);
+            if (numLikes){
+                setNumLikes(numLikes - 1);
+            }
             setClickAgain(0);
             setIsSelect(!isSelect);
             console.log(numLikes)
@@ -33,7 +35,9 @@ export default function Statusdefault({ iconDefault, iconFull, handleFunction, t
         }
 
         if (!isSelect){
-            setNumLikes( numLikes => numLikes + 1);
+            if (numLikes){
+                setNumLikes(numLikes - 1);
+            }
             setIsSelect(!isSelect);
             setClickAgain(clickAgain + 1);
             console.log(numLikes)
@@ -54,7 +58,7 @@ export default function Statusdefault({ iconDefault, iconFull, handleFunction, t
                     )}
                 </span>
             </ButtonFilter>
-            {numLikes !== undefined ? numLikes : ""}
+            {numLikes !== undefined && !Number.isNaN(numLikes) ? numLikes : ""}
         </Wrapper>
     )
 }
