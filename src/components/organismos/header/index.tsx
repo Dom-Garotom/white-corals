@@ -52,7 +52,7 @@ export default function Header() {
                     {!isVisble &&
                         <div>
                             <Link href={'/home'}>Home</Link>
-                            <Link href={''}>Meus Artigos</Link>
+                            <Link href={'/myArticles'}>Meus Artigos</Link>
                             <Link href={'/newPost'}>Publicar artigo</Link>
                         </div>
                     }
@@ -73,7 +73,7 @@ export default function Header() {
             </WrapperContainer>
             <WrapperMenu block={menuIsVisible}>
                 <Link href={'/home'}>Home</Link>
-                <Link href={''}>Meus Artigos</Link>
+                <Link href={'/myArticles'}>Meus Artigos</Link>
                 <Link href={'/newPost'}>Publicar artigo</Link>
             </WrapperMenu>
 
