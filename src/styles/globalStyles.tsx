@@ -1,6 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
+    @font-face {
+      font-family: 'Anton';
+      src: url('/fonts/Anton-regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
     *{
         padding: 0;
@@ -16,6 +22,10 @@ export const GlobalStyles = createGlobalStyle`
 
     body{
         background-color: #F5F5F5;
+    }
+
+    h2, h1{
+        font-family: "Anton" , sans-serif;
     }
 
 
