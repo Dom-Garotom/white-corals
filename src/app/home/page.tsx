@@ -37,7 +37,7 @@ const WrapperFilter = styled.div`
   justify-content: end;
   padding: 20px;
 
-  div{
+  .container{
     position: fixed;
     top: 100px;
   }
@@ -47,7 +47,7 @@ const WrapperFilter = styled.div`
     justify-content: center;
     padding: 10px;
     
-    div{
+    .container{
       width: 95%;
       position: fixed;
       top: 30px;
@@ -177,7 +177,9 @@ export default function ArticleHome() {
       <WrapperArticleContainer>
 
         <WrapperFilter>
-          {isVisble && <FilterArticles />}
+          <div  className="container">
+          {isVisble && <FilterArticles   />}
+          </div>
         </WrapperFilter>
 
         <WrapperArticles>

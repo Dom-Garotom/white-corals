@@ -9,10 +9,11 @@ import { FaBookmark } from "react-icons/fa";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import StatusDefault from "@/components/atomos/statusDefault";
+import { useRouter } from "next/navigation";
 
 const Wrapper = styled.div`
   width: 70px;
-  height: 280px;
+  height: 330px;
   background-color: #fff;
   padding: 10px;
   border-radius: 10px;
@@ -27,6 +28,8 @@ const Wrapper = styled.div`
 `
 
 export default function FilterArticles() {
+  const router = useRouter()
+
   return (
     <Wrapper>
 
@@ -58,6 +61,7 @@ export default function FilterArticles() {
         iconDefault={<FaPlus />}
         iconFull={<FaPlus />}
         title="Criar um post"
+        handleFunction={ () => router.push("/newPost")}
       />
 
     </Wrapper>
