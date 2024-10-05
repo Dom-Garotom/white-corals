@@ -128,6 +128,7 @@ export default function MyArticles() {
 
           {dataLocalStorage.map((article, index) => (
             <ArticlePreview
+              id={article.id}
               key={index}
               title={article.title}
               tags={article.tags}
