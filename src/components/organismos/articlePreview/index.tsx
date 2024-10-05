@@ -2,6 +2,7 @@ import ComentStatus from "@/components/atomos/comentStatus"
 import LikeStatus from "@/components/atomos/likeStatus"
 import SaveStatus from "@/components/atomos/saveStatus"
 import { TagsArticles, TitleDefault } from "@/styles/styledComponents"
+import Link from "next/link"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -50,23 +51,27 @@ const WrapperStatus = styled.div`
 `
 
 type propsArticlePreview = {
+    id: string;
     title: string;
-    tags: Tags[];
+    tags: {
+        color: string;
+        content: string;
+    }[];
     likes: number;
     comentarios: number;
     saved?: boolean;
     img?: string;
 }
 
-interface Tags {
-    color: string;
-    content: string
-}
 
-export default function ArticlePreview({ title, tags, likes , comentarios , saved }: propsArticlePreview) {
+export default function ArticlePreview({ title, tags, likes , comentarios , saved, id }: propsArticlePreview) {
     return (
         <Wrapper>
-            <TitleDefault>{title}</TitleDefault>
+
+            <Link href={`/article/${id}`}>
+                <TitleDefault>{title}</TitleDefault>
+            </Link>
+
             <WrapperTags>
                 {tags.map((tag , index) => ((
                     <TagsArticles
