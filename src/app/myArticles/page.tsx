@@ -115,7 +115,9 @@ export default function MyArticles() {
       <Header />
       <Hero />
       <Wrapper>
-        <TitleDefault size="2.7rem">Os últimos Artigos que você postou</TitleDefault>
+        <TitleDefault size="2.7rem">
+          {quantidadeDosArtigos == 0 ? "Você ainda não postou nenhum Artigo" : "Os últimos Artigos que você postou"}
+        </TitleDefault>
 
       </Wrapper>
       <WrapperArticleContainer>
