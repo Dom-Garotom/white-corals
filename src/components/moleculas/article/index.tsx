@@ -1,7 +1,6 @@
 import { TagsArticles, TitleDefault } from "@/styles/styledComponents"
 import Image from "next/image"
 import styled from "styled-components"
-import img from "@/public/hero-BackGround.png"
 import { marked } from "marked"
 import { useEffect, useState } from "react"
 
@@ -74,13 +73,14 @@ type Props = {
     id: string;
     title: string;
     article: string;
+    image: string;
     tags?: {
         color: string;
         content: string;
     }[];
 }
 
-export default function Article({ title, article , tags }: Props) {
+export default function Article({ title, article , tags , image }: Props) {
     const [htmlContent, setHtmlContent] = useState<string | Promise<string> | undefined>();
 
     useEffect(() => {
@@ -95,7 +95,7 @@ export default function Article({ title, article , tags }: Props) {
 
     return (
         <WrapperMain>
-            <Image src={img} alt="Cover do artigo" />
+            <Image src={image} alt="Cover do artigo" />
             <WrapperHeader>
                 <TitleDefault size="3.2rem">{title}</TitleDefault>
 
