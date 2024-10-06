@@ -92,8 +92,9 @@ export default function ArticlesPage() {
         <WrapperArticles>
 
           <Article
-            article={dataArticle.article}
             id={dataArticle.id}
+            image={dataArticle.image}
+            article={dataArticle.article}
             title={dataArticle.title}
             tags={dataArticle.tags}
           />

@@ -95,7 +95,7 @@ export default function Article({ title, article , tags , image }: Props) {
 
     return (
         <WrapperMain>
-            <Image src={image} alt="Cover do artigo" />
+            <Image src={image} alt="Cover do artigo" width={900} height={300} />
             <WrapperHeader>
                 <TitleDefault size="3.2rem">{title}</TitleDefault>
 
