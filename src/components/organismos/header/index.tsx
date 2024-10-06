@@ -7,6 +7,11 @@ import { ButtonMenuHeader } from "@/styles/styledComponents";
 import { useEffect, useRef, useState } from "react";
 import { WrapperHeader ,Wrapper , WrapperContainer , WrapperMenu } from "./headerStyled";
 
+type UserData = {
+    email: string;
+    senha: string;
+    nome: string;
+}
 
 export default function Header() {
     const header = useRef<HTMLDivElement>(null);
@@ -40,6 +45,9 @@ export default function Header() {
         }
     })
 
+    const getUser = localStorage.getItem("user");
+    const users : UserData[] = getUser ? JSON.parse(getUser) : [];
+
 
     return (
         <WrapperHeader ref={header}>
@@ -60,7 +68,7 @@ export default function Header() {
                     <span>
                         olá,
                         <Link href={''} id="NameUser">
-                            <b>Karina</b>
+                            <b>{users[0].nome}</b>
                             <IoIosArrowDown />
                         </Link>
                     </span>
