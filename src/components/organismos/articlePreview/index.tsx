@@ -21,6 +21,10 @@ const Wrapper = styled.div`
     h2:hover{
             color: #5b5bff;
     }
+
+    a{
+        text-decoration: none;
+    }
     
     @media screen and (max-width:600px) {
         h2{
