@@ -37,7 +37,7 @@ const WrapperFilter = styled.div`
   justify-content: end;
   padding: 20px;
 
-  div{
+  .container{
     position: fixed;
     top: 100px;
   }
@@ -47,7 +47,7 @@ const WrapperFilter = styled.div`
     justify-content: center;
     padding: 10px;
     
-    div{
+    .container{
       width: 95%;
       position: fixed;
       top: 30px;
@@ -116,13 +116,15 @@ export default function MyArticles() {
       <Hero />
       <Wrapper>
         <TitleDefault size="2.7rem">
-          {quantidadeDosArtigos == 0 ? "Você ainda não postou nenhum Artigo" : "Os últimos Artigos que você postou"}
+          <div className="container">
+            {quantidadeDosArtigos == 0 ? "Você ainda não postou nenhum Artigo" : "Os últimos Artigos que você postou"}
+          </div>
         </TitleDefault>
 
       </Wrapper>
       <WrapperArticleContainer>
         <WrapperFilter>
-          { isVisble && quantidadeDosArtigos > 7  ? <FilterArticles /> : ""}
+          {isVisble && quantidadeDosArtigos > 7 ? <FilterArticles /> : ""}
         </WrapperFilter>
         <WrapperArticles>
 
