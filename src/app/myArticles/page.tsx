@@ -135,6 +135,7 @@ export default function MyArticles() {
               likes={article.likes}
               comentarios={article.comentarios}
               saved={article.saved}
+              img={article.image && article.image}
             />
           ))}
 

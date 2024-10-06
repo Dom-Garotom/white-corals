@@ -193,6 +193,7 @@ export default function ArticleHome() {
               likes={article.likes}
               comentarios={article.comentarios}
               saved={article.saved}
+              img={article.image && article.image}
             />
           ))}
 
