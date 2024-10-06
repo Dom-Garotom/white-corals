@@ -38,7 +38,7 @@ const Wrapper = styled.form`
     padding: 10px;
     font-size: 18px;
     font-family: "SF Mono" , sans-serif;
-    border: 2px solid #000;
+    border: 2px solid #B0B0B5;
 
     &::placeholder{
       font-weight: 700;
@@ -105,6 +105,7 @@ const ArticleSchema = z.object({
   likes: z.number(),
   comentarios: z.number(),
   saved: z.boolean(),
+  image: z.string(),
 })
 
 type ArticleSchema = z.infer<typeof ArticleSchema>;
@@ -160,8 +161,21 @@ export default function NewPost() {
         <Wrapper onSubmit={handleSubmit(handleInformation)}>
 
           <WrapperImageContainer>
-            <button>Adicionar Imagem</button>
+            <button onClick={(a) => a.preventDefault()}>Adicionar Imagem</button>
           </WrapperImageContainer>
+
+          <TitleDefault size="1.2rem">Link da imagem</TitleDefault>
+
+          <InputDefault
+            icon={''}
+            label=""
+            type="text"
+            borderColor="#000"
+            register={register("image")}
+            required
+          />
+
+
 
           <TitleDefault size="1.2rem">Titulo do post</TitleDefault>
 
@@ -171,6 +185,7 @@ export default function NewPost() {
             type="text"
             borderColor="#000"
             register={register("title")}
+            required
           />
 
           <TitleDefault size="1.2rem">Adicionar tag</TitleDefault>
@@ -182,9 +197,10 @@ export default function NewPost() {
             type="text"
             borderColor="#000"
             register={register("tags")}
+            required
           />
 
-          <textarea placeholder="Artigo aqui..."  {...register("article")} />
+          <textarea placeholder="Artigo aqui..."  {...register("article")} required />
 
           <p>
             Nosso Criador de Post é uma ferramenta exclusiva para escritores que permite a criação de artigos utilizando a
