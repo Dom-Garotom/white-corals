@@ -13,10 +13,11 @@ const WrapperMain = styled.div`
     box-shadow: 4px 4px 7px 4px rgba(0, 0, 0, 0.1);
 
     img{
-        max-width: 850px;
+        max-width: 100%;
         width: 100%;
         height: 338px;
-        border-radius: 10px 10px 0px 0px;
+        border-radius: 12px 12px 0px 0px;
+        object-fit: cover;
     }
 `
 
@@ -27,6 +28,8 @@ const WrapperHeader = styled.div`
     div{
         display: flex;
         flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
     }
 
     @media screen and (max-width: 800px) {
@@ -37,31 +40,31 @@ const WrapperHeader = styled.div`
 
 const WrapperBody = styled.div`
     background-color: #fff;
-    max-width: 850px;
     width: 100%;
     min-block-size: 50vh;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 12px 12px;
     padding: 32px 64px;
 
 
     h2{
         font-size: 2.3rem;
-        padding: 10px 0px;
+        margin-bottom: 10px;
         color: #171717;
         font-weight: 600;
     }
 
     p , li{
         font-size: 20px;
+        line-height: 1.6;
         font-weight: 300;
-        font-family: Roboto , sans-serif;
+        font-family: "Roboto" , sans-serif;
         margin-bottom: 10px;
         color: #313131;
     }
 
     ul , ol{
         margin: 10px 0px;
-        margin-left: 20px;
+        margin-left: 16px;
     }
 
     @media screen and (max-width: 800px) {
@@ -95,7 +98,7 @@ export default function Article({ title, article , tags , image }: Props) {
 
     return (
         <WrapperMain>
-            <Image src={image} alt="Cover do artigo" width={900} height={300} />
+            { image && <Image src={image} alt="Cover do artigo" width={900} height={300} />}
             <WrapperHeader>
                 <TitleDefault size="3.2rem">{title}</TitleDefault>
 
