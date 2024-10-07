@@ -8,6 +8,7 @@ import Footer from "@/components/moleculas/footer";
 import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
 import { useEffect, useState } from "react";
+import ButtonTop from "@/components/atomos/buttonTop";
 
 const WrapperArticleContainer = styled.section`
   width: 100%;
@@ -142,6 +143,8 @@ export default function MyArticles() {
           ))}
 
         </WrapperArticles>
+
+        <ButtonTop/>
 
       </WrapperArticleContainer>
       <Footer />

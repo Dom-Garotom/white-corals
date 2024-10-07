@@ -9,6 +9,7 @@ import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
 import { useEffect,  useState } from "react";
 import { dataBase } from "@/db";
+import ButtonTop from "@/components/atomos/buttonTop";
 
 const WrapperArticleContainer = styled.section`
   width: 100%;
@@ -143,6 +144,8 @@ export default function ArticleHome() {
           ))}
 
         </WrapperArticles>
+
+        <ButtonTop/>
 
       </WrapperArticleContainer>
       <Footer />
