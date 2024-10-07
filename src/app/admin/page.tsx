@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   width: 100%;
   min-block-size: 100vh;
   gap: 50px;
-
+  padding-bottom: 50px;
   background-color: #131313;
 
   header{

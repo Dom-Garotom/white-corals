@@ -1,4 +1,5 @@
 "use client"
+
 import InputDefault from "@/components/moleculas/inputDefault";
 import styled from "styled-components";
 import { MdEmail } from "react-icons/md";
@@ -95,21 +96,18 @@ export default function Login() {
 
     const getUser = localStorage.getItem("user");
     const users : FormSchema[] = getUser ? JSON.parse(getUser) : [];
+    const user = users.find(user => user.email === data.email && user.senha === data.senha);
 
-    
-    const handleEmail = users.find( ( p : FormSchema ) => p.email === data.email) 
-    const handleSenha = users.find( ( p : FormSchema ) => p.senha === data.senha) 
+    if (user) {
+      const token = self.crypto.randomUUID();
+      document.cookie = `authToken=${token}; path=/; secure; samesite=strict`;
 
-
-    if ( handleEmail && handleSenha){
-      toast.success("Sua conta foi criada com sucesso");
-  
+      toast.success("Login bem-sucedido");
       router.push('/home');
-
     } else {
-      toast.error("seu email ou senha estão incorretas");
+      toast.error("Seu email ou senha estão incorretos");
     }
-
+    
   }
 
 

@@ -55,9 +55,10 @@ export default function SignUp() {
 
     toast.success("Sua conta foi criada com sucesso");
 
+
+    const token = self.crypto.randomUUID();
+    document.cookie = `authToken=${token}; path=/; secure; samesite=strict`;
     router.push('/home');
-
-
   }
 
 
