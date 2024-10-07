@@ -6,6 +6,7 @@ import Header from "@/components/organismos/header"
 import Article from "@/components/moleculas/article"
 import StatusBar from "@/components/moleculas/statusBar"
 import { useParams } from "next/navigation"
+import { dataBase } from "@/db"
 
 const Wrapper = styled.main`
 
@@ -69,6 +70,10 @@ export default function ArticlesPage() {
   let dataLocalStorage = [];
 
   dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+
+  dataBase.map( elemnt =>{
+    dataLocalStorage.push(elemnt);
+  })
 
   const dataArticle = dataLocalStorage.find( element => element.id === id );
 
