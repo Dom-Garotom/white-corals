@@ -57,20 +57,20 @@ export default function Header() {
                 </Link>
 
                 <Wrapper>
-                    {!isVisble &&
+                    { !isVisble && !menuIsVisible ? (
                         <div>
                             <Link href={'/home'}>Home</Link>
                             <Link href={'/myArticles'}>Meus Artigos</Link>
                             <Link href={'/newPost'}>Publicar artigo</Link>
-                        </div>
+                        </div> 
+                        ) : ( '' )
                     }
 
-                    <span>
+                    <span  onClick={() => togglVisibilityMenu()}>
                         olá,
-                        <Link href={''} id="NameUser">
                             <b>{users[0].nome}</b>
                             <IoIosArrowDown />
-                        </Link>
+                        
                     </span>
 
                     <ButtonMenuHeader $block={isVisble} onClick={() => togglVisibilityMenu()}>
@@ -83,6 +83,7 @@ export default function Header() {
                 <Link href={'/home'}>Home</Link>
                 <Link href={'/myArticles'}>Meus Artigos</Link>
                 <Link href={'/newPost'}>Publicar artigo</Link>
+                <Link href={'/admin'}>DashBoard</Link>
             </WrapperMenu>
 
         </WrapperHeader>
