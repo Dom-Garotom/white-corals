@@ -36,7 +36,7 @@ export default function Statusdefault({ iconDefault, iconFull, handleFunction, t
 
         if (!isSelect){
             if (numLikes){
-                setNumLikes(numLikes - 1);
+                setNumLikes(numLikes + 1);
             }
             setIsSelect(!isSelect);
             setClickAgain(clickAgain + 1);
