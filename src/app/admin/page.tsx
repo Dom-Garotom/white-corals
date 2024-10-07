@@ -51,19 +51,19 @@ const Wrapper = styled.div`
   }
 `;
 
-type DataBasePerson ={
+type DataBasePerson = {
   "name": string,
   "email": string,
   "aceptEmail": boolean
 }
 
-type DataBase ={
+type DataBase = {
   id: string;
   title: string;
   article: string;
   tags: {
-      content: string;
-      color: string;
+    content: string;
+    color: string;
   }[];
   likes: number;
   comentarios: number;
@@ -71,53 +71,64 @@ type DataBase ={
   image?: string;
 }
 
+type article = {
+  id: string,
+  name: string
+}
+
+type person = {
+  email: string;
+  name: string;
+  status: boolean
+}
+
 
 export default function Page() {
-  const [logsArticle , setLogsArticle] = useState([]);
-  const [logsPerson, setLogsPerson] = useState([]);
+  const [logsArticle, setLogsArticle] = useState<article[]>([]);
+  const [logsPerson, setLogsPerson] = useState<person[]>([]);
 
-  useEffect( () =>{
+  useEffect(() => {
     const locaStorage = localStorage.getItem("article");
-    const content : DataBase[] = locaStorage ? JSON.parse(locaStorage) : [];
+    const content: DataBase[] = locaStorage ? JSON.parse(locaStorage) : [];
 
-    
-    const localContent = content.map( (article) =>(({
-      id : article.id,
-      name : article.title
+
+    const localContent = content.map((article) => (({
+      id: article.id,
+      name: article.title
     })))
 
 
-    const db = dataBase.map( (article) =>(({
-      id : article.id,
-      name : article.title
+    const db = dataBase.map((article) => (({
+      id: article.id,
+      name: article.title
     })))
 
-    const bancoDeDados = [...localContent , ...db];
+    const bancoDeDados = [...localContent, ...db];
 
     setLogsArticle(bancoDeDados)
 
   }, [])
 
 
-  useEffect( () =>{
+  useEffect(() => {
     const locaStorage = localStorage.getItem("user");
-    const content : DataBasePerson[] = locaStorage ? JSON.parse(locaStorage) : [];
+    const content: DataBasePerson[] = locaStorage ? JSON.parse(locaStorage) : [];
 
-    
-    const localContent = content.map( (article) =>(({
-      email : article.email,
-      name : article.name,
-      status : article.aceptEmail
+
+    const localContent = content.map((article) => (({
+      email: article.email,
+      name: article.name,
+      status: article.aceptEmail
     })))
 
 
-    const db = dataBasePerson.map( (article) =>(({
-      email : article.email,
-      name : article.name,
-      status : article.aceptEmail
+    const db = dataBasePerson.map((article) => (({
+      email: article.email,
+      name: article.name,
+      status: article.aceptEmail
     })))
 
-    const bancoDeDados = [...localContent , ...db];
+    const bancoDeDados = [...localContent, ...db];
 
     setLogsPerson(bancoDeDados)
 

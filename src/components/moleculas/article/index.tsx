@@ -114,7 +114,7 @@ export default function Article({ title, article , tags , image }: Props) {
 
             </WrapperHeader>
             <WrapperBody>
-                <p dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                <p dangerouslySetInnerHTML={{ __html: !htmlContent }} />
             </WrapperBody>
         </WrapperMain>
     )
