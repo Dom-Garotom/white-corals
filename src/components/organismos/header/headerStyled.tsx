@@ -68,7 +68,21 @@ export const Wrapper = styled.div`
         }
     }
 
+    @media screen and (max-width : 365px) {
+        gap: 0px;
 
+        #NameUser{
+            margin-right: 0px;
+        }
+
+        span::before{
+            content: none;
+        }
+
+        span::after{
+            content: none;
+        }
+    }
 
 `
 
