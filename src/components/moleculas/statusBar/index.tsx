@@ -6,6 +6,7 @@ import { FaRegBookmark } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { AiOutlineComment } from "react-icons/ai";
 import StatusDefault from "@/components/atomos/statusDefault";
+import { useRouter } from "next/navigation";
 
 const Wrapper = styled.div`
   width: 70px;
@@ -32,6 +33,7 @@ type Props = {
 
 
 export default function StatusBar( {likes , comentarios} : Props) {
+    const router = useRouter()
     return (
         <Wrapper>
 
@@ -59,6 +61,7 @@ export default function StatusBar( {likes , comentarios} : Props) {
                 iconDefault={<FaPlus />}
                 iconFull={<FaPlus />}
                 title="Criar um post"
+                handleFunction={ () => router.push("/newPost")}
             />
 
         </Wrapper>
