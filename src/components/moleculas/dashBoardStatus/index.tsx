@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 350px;
+  max-width: 500px;
   width: 100%;
   padding: 20px;
 
@@ -37,6 +37,15 @@ const Wrapper = styled.div`
 
   background-color: #ECEEF3;
   border-radius: 8px;
+
+  @media screen and ( max-width: 350px) {
+
+    div{
+        flex-direction: column;
+        align-items: start;
+    }
+    
+  }
 `;
 
 type propsDashboardStatus = {
