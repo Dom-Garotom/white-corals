@@ -74,7 +74,7 @@ export default function LogsArticles({ logs }: props) {
   return (
     <Wrapper>
       <WrapperHeader>
-        <p>Historico de inscritos</p>
+        <p>Artigos submetidos</p>
       </WrapperHeader>
       <WrapperBody>
         <div className="header-body">
