@@ -23,27 +23,20 @@ export default function Statusdefault({ iconDefault, iconFull, handleFunction, t
     const [clickAgain , setClickAgain] = useState(0);
 
 
-    const handleClick = () =>{
-        if (clickAgain != 0 && isSelect){
+    const handleClick = () => {
+        if (isSelect) {
             if (numLikes){
-                setNumLikes(numLikes - 1);
+                setNumLikes(numLikes > 0 ? numLikes - 1 : 0);
+                setIsSelect(false);
             }
-            setClickAgain(0);
-            setIsSelect(!isSelect);
-            console.log(numLikes)
-            return;
-        }
-
-        if (!isSelect){
+        } else {
             if (numLikes){
                 setNumLikes(numLikes + 1);
+                setIsSelect(true);
             }
-            setIsSelect(!isSelect);
-            setClickAgain(clickAgain + 1);
-            console.log(numLikes)
-            return;
         }
-    }
+        setClickAgain(clickAgain + 1);
+    };
 
 
 

@@ -11,6 +11,7 @@ import { z } from "zod";
 import { Toaster, toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { myDataBase } from "@/db";
 
 
 const Wrapper = styled.form`
@@ -176,14 +177,16 @@ export default function NewPost() {
       tags: containerDataObject.tags,
     }
 
-    const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
-    let storage: ArticleSchema[] = [];
+    // const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+    // let storage: ArticleSchema[] = [];
 
-    storage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+    // storage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
 
-    storage.push(dataObject);
+    // storage.push(dataObject);
 
-    localStorage.setItem("article", JSON.stringify(storage));
+    // localStorage.setItem("article", JSON.stringify(storage));
+
+    myDataBase.push(dataObject)
 
     toast.success("Post criado com sucesso")
 

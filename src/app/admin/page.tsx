@@ -5,7 +5,7 @@ import styled from "styled-components";
 import DashboardStatus from "@/components/moleculas/dashBoardStatus";
 import LogsSubscribes from "@/components/moleculas/logsSubscribes";
 import LogsArticles from "@/components/moleculas/logsArticles";
-import { dataBase, dataBasePerson } from "@/db";
+import { dataBase, dataBasePerson, myDataBase } from "@/db";
 import { useEffect, useState } from "react";
 import { TitleMain } from "@/styles/styledComponents";
 
@@ -51,25 +51,25 @@ const Wrapper = styled.div`
   }
 `;
 
-type DataBasePerson = {
-  "name": string,
-  "email": string,
-  "aceptEmail": boolean
-}
+// type DataBasePerson = {
+//   "name": string,
+//   "email": string,
+//   "aceptEmail": boolean
+// }
 
-type DataBase = {
-  id: string;
-  title: string;
-  article: string;
-  tags: {
-    content: string;
-    color: string;
-  }[];
-  likes: number;
-  comentarios: number;
-  saved: boolean;
-  image?: string;
-}
+// type DataBase = {
+//   id: string;
+//   title: string;
+//   article: string;
+//   tags: {
+//     content: string;
+//     color: string;
+//   }[];
+//   likes: number;
+//   comentarios: number;
+//   saved: boolean;
+//   image?: string;
+// }
 
 type article = {
   id: string,
@@ -88,14 +88,14 @@ export default function Page() {
   const [logsPerson, setLogsPerson] = useState<person[]>([]);
 
   useEffect(() => {
-    const locaStorage = localStorage.getItem("article");
-    const content: DataBase[] = locaStorage ? JSON.parse(locaStorage) : [];
+    // const locaStorage = localStorage.getItem("article");
+    // const content: DataBase[] = locaStorage ? JSON.parse(locaStorage) : [];
 
 
-    const localContent = content.map((article) => (({
-      id: article.id,
-      name: article.title
-    })))
+    // const localContent = content.map((article) => (({
+    //   id: article.id,
+    //   name: article.title
+    // })))
 
 
     const db = dataBase.map((article) => (({
@@ -103,7 +103,12 @@ export default function Page() {
       name: article.title
     })))
 
-    const bancoDeDados = [...localContent, ...db];
+    const myDb = myDataBase.map((article) => (({
+      id: article.id,
+      name: article.title
+    })))
+
+    const bancoDeDados = [...db , ...myDb];
 
     setLogsArticle(bancoDeDados)
 
@@ -111,24 +116,24 @@ export default function Page() {
 
 
   useEffect(() => {
-    const locaStorage = localStorage.getItem("user");
-    const content: DataBasePerson[] = locaStorage ? JSON.parse(locaStorage) : [];
+    // const locaStorage = localStorage.getItem("user");
+    // const content: DataBasePerson[] = locaStorage ? JSON.parse(locaStorage) : [];
 
 
-    const localContent = content.map((article) => (({
-      email: article.email,
-      name: article.name,
-      status: article.aceptEmail
-    })))
+    // const localContent = content.map((article) => (({
+    //   email: article.email,
+    //   name: article.name,
+    //   status: article.aceptEmail
+    // })))
 
 
     const db = dataBasePerson.map((article) => (({
       email: article.email,
-      name: article.name,
+      name: article.nome,
       status: article.aceptEmail
     })))
 
-    const bancoDeDados = [...localContent, ...db];
+    const bancoDeDados = [...db];
 
     setLogsPerson(bancoDeDados)
 
