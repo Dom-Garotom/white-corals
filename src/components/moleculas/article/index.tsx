@@ -84,17 +84,12 @@ type Props = {
 }
 
 export default function Article({ title, article , tags , image }: Props) {
-    const [htmlContent, setHtmlContent] = useState<string | Promise<string> | undefined>();
+    const [htmlContent, setHtmlContent] = useState<string>("");
 
     useEffect(() => {
-
-        const handleArticle = async () => {
-            const html = marked(article);
-            await setHtmlContent(html);
-        }
-
-        handleArticle();
-    })
+        const html = marked(article);
+        setHtmlContent(html);
+    }, [article])
 
     return (
         <WrapperMain>
