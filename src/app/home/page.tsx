@@ -8,8 +8,10 @@ import Footer from "@/components/moleculas/footer";
 import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
 import { useEffect, useState } from "react";
-import { DataBase, dataBase } from "@/db";
+import {  dataBase, myDataBase } from "@/db";
 import ButtonTop from "@/components/atomos/buttonTop";
+
+
 
 const WrapperArticleContainer = styled.section`
   width: 100%;
@@ -74,33 +76,54 @@ const Wrapper = styled.div`
   }
 `
 
-
+type DataBase = {
+    id: string;
+    title: string;
+    article: string;
+    tags: {
+      content: string;
+      color: string;
+    }[];
+    likes: number;
+    comentarios: number;
+    saved: boolean;
+    image?: string;
+  }
 
 
 export default function ArticleHome() {
-  const [data , setData] = useState<DataBase[]>();
+
+//   const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+//   let dataLocalStorage = [];
+//   dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+  
+//  dataBase.map(elemnt => {
+//     dataLocalStorage.push(elemnt);
+//   })
+
+  const [logsArticle, setLogsArticle] = useState<DataBase[]>([]);
 
   useEffect(() => {
-    const getLocalStorage = () => {
-      
-      if (typeof window !== 'undefined') {
-        const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+    // const locaStorage = localStorage.getItem("article");
+    // const content: DataBase[] = locaStorage ? JSON.parse(locaStorage) : [];
 
-        let dataLocalStorage = [];
-  
-        dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
-  
-        dataBase.map(elemnt => {
-          dataLocalStorage.push(elemnt);
-        })
-  
-        setData(dataLocalStorage)
-      }
-     
-    }
 
-    getLocalStorage();
-  })
+    // const localContent = content.map((article) => (({
+    //   id: article.id,
+    //   name: article.title
+    // })))
+
+
+    const db = dataBase;
+
+    const myDb = myDataBase;
+
+    const bancoDeDados = [...myDb ,...db];
+
+    setLogsArticle(bancoDeDados)
+
+  }, [])
+
 
 
   const [isVisble, setIsVisible] = useState(Boolean);
@@ -144,7 +167,7 @@ export default function ArticleHome() {
 
         <WrapperArticles>
 
-          { data && data.map((article, index) => (
+          { logsArticle.map((article, index) => (
             <ArticlePreview
               key={index}
               id={article.id}

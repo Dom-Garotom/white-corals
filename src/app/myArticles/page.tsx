@@ -9,7 +9,7 @@ import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
 import { useEffect, useState } from "react";
 import ButtonTop from "@/components/atomos/buttonTop";
-import { DataBase } from "@/db";
+import { myDataBase } from "@/db";
 
 const WrapperArticleContainer = styled.section`
   width: 100%;
@@ -78,27 +78,18 @@ const Wrapper = styled.div`
 
 
 export default function MyArticles() {
-  const [data , setData] = useState<DataBase[]>();
-  const [quantidadeDosArtigos , setQuantidadeDosArtigos] = useState<number>(0);
   const [isVisble, setIsVisible] = useState(Boolean);
 
 
-  useEffect(() => {
-    const getLocalStorage = () => {
-      const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+  // const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
 
-      let dataLocalStorage = [];
+  // let dataLocalStorage = [];
 
-      dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
-      
-      const quantidadeDosArtigos = dataLocalStorage.length;
+  // dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
 
-      setQuantidadeDosArtigos(quantidadeDosArtigos)
-      setData(dataLocalStorage)
-    }
 
-    getLocalStorage();
-  })
+  const quantidadeDosArtigos = myDataBase.length;
+  console.log(myDataBase)
 
 
   useEffect(() => {
@@ -140,7 +131,7 @@ export default function MyArticles() {
         </WrapperFilter>
         <WrapperArticles>
 
-          {data && data.map((article, index) => (
+          {myDataBase.map((article, index) => (
             <ArticlePreview
               id={article.id}
               key={index}

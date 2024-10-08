@@ -13,7 +13,7 @@ export type DataBase ={
 }
 
 export type DataBasePerson ={
-  "name": string,
+  "nome": string,
   "email": string,
   "aceptEmail": boolean
 }
@@ -204,294 +204,297 @@ export const dataBase : DataBase[] = [
 
 export const dataBasePerson : DataBasePerson[] = [
   {
-    "name": "John Doe",
+    "nome": "John Doe",
     "email": "john.doe@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Maria Silva",
+    "nome": "Maria Silva",
     "email": "maria.silva@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Lucas Pereira",
+    "nome": "Lucas Pereira",
     "email": "lucas.pereira@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Sophia Oliveira",
+    "nome": "Sophia Oliveira",
     "email": "sophia.oliveira@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Pedro Santos",
+    "nome": "Pedro Santos",
     "email": "pedro.santos@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Isabela Costa",
+    "nome": "Isabela Costa",
     "email": "isabela.costa@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Rafael Lima",
+    "nome": "Rafael Lima",
     "email": "rafael.lima@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Carolina Souza",
+    "nome": "Carolina Souza",
     "email": "carolina.souza@gmail.com",
     "aceptEmail": true
   },
 
   {
-    "name": "Ana Martins",
+    "nome": "Ana Martins",
     "email": "ana.martins@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Bruno Almeida",
+    "nome": "Bruno Almeida",
     "email": "bruno.almeida@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Carlos Nunes",
+    "nome": "Carlos Nunes",
     "email": "carlos.nunes@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Daniela Ferreira",
+    "nome": "Daniela Ferreira",
     "email": "daniela.ferreira@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Eduardo Rocha",
+    "nome": "Eduardo Rocha",
     "email": "eduardo.rocha@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Fernanda Mendes",
+    "nome": "Fernanda Mendes",
     "email": "fernanda.mendes@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Gabriel Cunha",
+    "nome": "Gabriel Cunha",
     "email": "gabriel.cunha@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Helena Barbosa",
+    "nome": "Helena Barbosa",
     "email": "helena.barbosa@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Igor Ribeiro",
+    "nome": "Igor Ribeiro",
     "email": "igor.ribeiro@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Juliana Costa",
+    "nome": "Juliana Costa",
     "email": "juliana.costa@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Karla Azevedo",
+    "nome": "Karla Azevedo",
     "email": "karla.azevedo@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Leonardo Silva",
+    "nome": "Leonardo Silva",
     "email": "leonardo.silva@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Marcela Brito",
+    "nome": "Marcela Brito",
     "email": "marcela.brito@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Nicolas Farias",
+    "nome": "Nicolas Farias",
     "email": "nicolas.farias@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Olivia Matos",
+    "nome": "Olivia Matos",
     "email": "olivia.matos@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Paulo Lima",
+    "nome": "Paulo Lima",
     "email": "paulo.lima@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Quésia Correia",
+    "nome": "Quésia Correia",
     "email": "quesia.correia@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Ricardo Teixeira",
+    "nome": "Ricardo Teixeira",
     "email": "ricardo.teixeira@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Sofia Martins",
+    "nome": "Sofia Martins",
     "email": "sofia.martins@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Thiago Oliveira",
+    "nome": "Thiago Oliveira",
     "email": "thiago.oliveira@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Ursula Castro",
+    "nome": "Ursula Castro",
     "email": "ursula.castro@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Vitor Campos",
+    "nome": "Vitor Campos",
     "email": "vitor.campos@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Wesley Duarte",
+    "nome": "Wesley Duarte",
     "email": "wesley.duarte@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Xavier Borges",
+    "nome": "Xavier Borges",
     "email": "xavier.borges@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Yara Souza",
+    "nome": "Yara Souza",
     "email": "yara.souza@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Zuleica Gomes",
+    "nome": "Zuleica Gomes",
     "email": "zuleica.gomes@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Alex Santana",
+    "nome": "Alex Santana",
     "email": "alex.santana@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Beatriz Lopes",
+    "nome": "Beatriz Lopes",
     "email": "beatriz.lopes@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Caio Monteiro",
+    "nome": "Caio Monteiro",
     "email": "caio.monteiro@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Diana Figueiredo",
+    "nome": "Diana Figueiredo",
     "email": "diana.figueiredo@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Eliana Moraes",
+    "nome": "Eliana Moraes",
     "email": "eliana.moraes@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Felipe Carvalho",
+    "nome": "Felipe Carvalho",
     "email": "felipe.carvalho@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Gisele Alves",
+    "nome": "Gisele Alves",
     "email": "gisele.alves@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Hugo Vieira",
+    "nome": "Hugo Vieira",
     "email": "hugo.vieira@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Inês Dias",
+    "nome": "Inês Dias",
     "email": "ines.dias@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "João Mendes",
+    "nome": "João Mendes",
     "email": "joao.mendes@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Kauê Xavier",
+    "nome": "Kauê Xavier",
     "email": "kaue.xavier@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Lorena Freitas",
+    "nome": "Lorena Freitas",
     "email": "lorena.freitas@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Marcos Ramos",
+    "nome": "Marcos Ramos",
     "email": "marcos.ramos@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Natália Duarte",
+    "nome": "Natália Duarte",
     "email": "natalia.duarte@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Otávio Barreto",
+    "nome": "Otávio Barreto",
     "email": "otavio.barreto@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Patrícia Lima",
+    "nome": "Patrícia Lima",
     "email": "patricia.lima@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Renato Pires",
+    "nome": "Renato Pires",
     "email": "renato.pires@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Sara Nogueira",
+    "nome": "Sara Nogueira",
     "email": "sara.nogueira@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "Túlio Santana",
+    "nome": "Túlio Santana",
     "email": "tulio.santana@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Ubiratan Souza",
+    "nome": "Ubiratan Souza",
     "email": "ubiratan.souza@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Viviane Fonseca",
+    "nome": "Viviane Fonseca",
     "email": "viviane.fonseca@gmail.com",
     "aceptEmail": false
   },
   {
-    "name": "William Mendes",
+    "nome": "William Mendes",
     "email": "william.mendes@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Ximena Lopes",
+    "nome": "Ximena Lopes",
     "email": "ximena.lopes@gmail.com",
     "aceptEmail": true
   },
   {
-    "name": "Yuri Matos",
+    "nome": "Yuri Matos",
     "email": "yuri.matos@gmail.com",
     "aceptEmail": false
   }
 ]
+
+
+export const myDataBase : DataBase[] = []

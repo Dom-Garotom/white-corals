@@ -84,21 +84,16 @@ type Props = {
 }
 
 export default function Article({ title, article , tags , image }: Props) {
-    const [htmlContent, setHtmlContent] = useState<string | Promise<string> | undefined>();
+    const [htmlContent, setHtmlContent] = useState<string>("");
 
     useEffect(() => {
-
-        const handleArticle = async () => {
-            const html = marked(article);
-            await setHtmlContent(html);
-        }
-
-        handleArticle();
-    })
+        const html = marked(article) as string;
+        setHtmlContent(html);
+    }, [article])
 
     return (
         <WrapperMain>
-            { image && <Image src={image} alt="Cover do artigo" width={900} height={300} />}
+            { image &&  <Image src={image} alt="Cover do artigo" width={900} height={300} />}
             <WrapperHeader>
                 <TitleDefault size="3.2rem">{title}</TitleDefault>
 
@@ -114,7 +109,7 @@ export default function Article({ title, article , tags , image }: Props) {
 
             </WrapperHeader>
             <WrapperBody>
-                <p dangerouslySetInnerHTML={{ __html: !htmlContent }} />
+                <p dangerouslySetInnerHTML={{ __html: htmlContent }} />
             </WrapperBody>
         </WrapperMain>
     )

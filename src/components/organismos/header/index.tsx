@@ -6,12 +6,13 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { ButtonMenuHeader } from "@/styles/styledComponents";
 import { useEffect, useRef, useState } from "react";
 import { WrapperHeader ,Wrapper , WrapperContainer , WrapperMenu } from "./headerStyled";
+import { dataBasePerson } from "@/db";
 
-type UserData = {
-    email: string;
-    senha: string;
-    nome: string;
-}
+// type UserData = {
+//     email: string;
+//     senha: string;
+//     nome: string;
+// }
 
 export default function Header() {
     const header = useRef<HTMLDivElement>(null);
@@ -45,8 +46,8 @@ export default function Header() {
         }
     })
 
-    const getUser = localStorage.getItem("user");
-    const users : UserData[] = getUser ? JSON.parse(getUser) : [];
+    // const getUser = localStorage.getItem("user");
+    // const users : UserData[] = getUser ? JSON.parse(getUser) : [];
 
 
     return (
@@ -68,7 +69,7 @@ export default function Header() {
 
                     <span  onClick={() => togglVisibilityMenu()}>
                         olá,
-                            <b>{users[0].nome}</b>
+                            <b>{dataBasePerson[dataBasePerson.length - 1].nome}</b>
                             <IoIosArrowDown />
                         
                     </span>
