@@ -9,6 +9,7 @@ import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
 import { useEffect, useState } from "react";
 import ButtonTop from "@/components/atomos/buttonTop";
+import { DataBase } from "@/db";
 
 const WrapperArticleContainer = styled.section`
   width: 100%;
@@ -77,18 +78,28 @@ const Wrapper = styled.div`
 
 
 export default function MyArticles() {
-
-
-
-  const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
-
-  let dataLocalStorage = [];
-
-  dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
-
-  const quantidadeDosArtigos = dataLocalStorage.length;
-
+  const [data , setData] = useState<DataBase[]>();
+  const [quantidadeDosArtigos , setQuantidadeDosArtigos] = useState<number>(0);
   const [isVisble, setIsVisible] = useState(Boolean);
+
+
+  useEffect(() => {
+    const getLocalStorage = () => {
+      const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+
+      let dataLocalStorage = [];
+
+      dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+      
+      const quantidadeDosArtigos = dataLocalStorage.length;
+
+      setQuantidadeDosArtigos(quantidadeDosArtigos)
+      setData(dataLocalStorage)
+    }
+
+    getLocalStorage();
+  })
+
 
   useEffect(() => {
     const handleScrool = () => {
@@ -129,7 +140,7 @@ export default function MyArticles() {
         </WrapperFilter>
         <WrapperArticles>
 
-          {dataLocalStorage.map((article, index) => (
+          {data && data.map((article, index) => (
             <ArticlePreview
               id={article.id}
               key={index}
