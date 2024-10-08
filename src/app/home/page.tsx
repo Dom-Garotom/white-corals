@@ -82,17 +82,21 @@ export default function ArticleHome() {
 
   useEffect(() => {
     const getLocalStorage = () => {
-      const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+      
+      if (typeof window !== 'undefined') {
+        const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
 
-      let dataLocalStorage = [];
-
-      dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
-
-      dataBase.map(elemnt => {
-        dataLocalStorage.push(elemnt);
-      })
-
-      setData(dataLocalStorage)
+        let dataLocalStorage = [];
+  
+        dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+  
+        dataBase.map(elemnt => {
+          dataLocalStorage.push(elemnt);
+        })
+  
+        setData(dataLocalStorage)
+      }
+     
     }
 
     getLocalStorage();
