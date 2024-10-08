@@ -52,7 +52,6 @@ const WrapperFooter = styled.footer`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin:  40px 0px 0px 0px;
     padding: 20px;
     background-color: #000;
 
