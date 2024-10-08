@@ -8,8 +8,10 @@ import Footer from "@/components/moleculas/footer";
 import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
 import { useEffect, useState } from "react";
-import { DataBase, dataBase } from "@/db";
+import {  dataBase } from "@/db";
 import ButtonTop from "@/components/atomos/buttonTop";
+
+
 
 const WrapperArticleContainer = styled.section`
   width: 100%;
@@ -78,29 +80,16 @@ const Wrapper = styled.div`
 
 
 export default function ArticleHome() {
-  const [data , setData] = useState<DataBase[]>();
 
-  useEffect(() => {
-    const getLocalStorage = () => {
-      
-      if (typeof window !== 'undefined') {
-        const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
-
-        let dataLocalStorage = [];
+  const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+  let dataLocalStorage = [];
+  dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
   
-        dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
-  
-        dataBase.map(elemnt => {
-          dataLocalStorage.push(elemnt);
-        })
-  
-        setData(dataLocalStorage)
-      }
-     
-    }
-
-    getLocalStorage();
+ dataBase.map(elemnt => {
+    dataLocalStorage.push(elemnt);
   })
+
+
 
 
   const [isVisble, setIsVisible] = useState(Boolean);
@@ -144,7 +133,7 @@ export default function ArticleHome() {
 
         <WrapperArticles>
 
-          { data && data.map((article, index) => (
+          { dataLocalStorage.map((article, index) => (
             <ArticlePreview
               key={index}
               id={article.id}
