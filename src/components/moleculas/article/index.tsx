@@ -87,7 +87,7 @@ export default function Article({ title, article , tags , image }: Props) {
     const [htmlContent, setHtmlContent] = useState<string>("");
 
     useEffect(() => {
-        const html = marked(article);
+        const html = marked(article) as string;
         setHtmlContent(html);
     }, [article])
 
