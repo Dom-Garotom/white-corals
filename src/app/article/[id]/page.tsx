@@ -6,7 +6,8 @@ import Header from "@/components/organismos/header"
 import Article from "@/components/moleculas/article"
 import StatusBar from "@/components/moleculas/statusBar"
 import { useParams } from "next/navigation"
-import { dataBase } from "@/db"
+import { DataBase, dataBase } from "@/db"
+import { useEffect, useState } from "react"
 
 const Wrapper = styled.main`
 
@@ -63,34 +64,44 @@ const WrapperFilter = styled.div`
 
 
 export default function ArticlesPage() {
-  const { id } = useParams(); 
+  const { id } = useParams();
+  const [dataArticle, setDataArticle] = useState<DataBase>();
 
-  const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+  useEffect(() => {
+    const getLocalStorage = () => {
 
-  let dataLocalStorage = [];
+      const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
 
-  dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+      let dataLocalStorage = [];
 
-  dataBase.map( elemnt =>{
-    dataLocalStorage.push(elemnt);
+      dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+
+      dataBase.map(elemnt => {
+        dataLocalStorage.push(elemnt);
+      })
+
+      const dataArticle = dataLocalStorage.find(element => element.id === id);
+
+      setDataArticle(dataArticle);
+    }
+
+    getLocalStorage();
+
   })
 
-  const dataArticle = dataLocalStorage.find( element => element.id === id );
-
   if (!dataArticle) {
-    return <p>Article not found</p>; 
+    return <p>Article not found</p>;
   }
- 
- 
+
   return (
     <Wrapper>
-        <Header />
-      
+      <Header />
+
       <WrapperArticleContainer>
 
         <WrapperFilter>
           <div className="container">
-            <StatusBar likes={dataArticle.likes} comentarios={dataArticle.comentarios}/>
+            <StatusBar likes={dataArticle.likes} comentarios={dataArticle.comentarios} />
           </div>
         </WrapperFilter>
 

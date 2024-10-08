@@ -76,7 +76,7 @@ type Props = {
     id: string;
     title: string;
     article: string;
-    image: string;
+    image?: string;
     tags?: {
         color: string;
         content: string;
