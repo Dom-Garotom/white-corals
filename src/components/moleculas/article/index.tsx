@@ -98,7 +98,7 @@ export default function Article({ title, article , tags , image }: Props) {
 
     return (
         <WrapperMain>
-            { image && <Image src={image} alt="Cover do artigo" width={900} height={300} />}
+            { image &&  <Image src={image} alt="Cover do artigo" width={900} height={300} />}
             <WrapperHeader>
                 <TitleDefault size="3.2rem">{title}</TitleDefault>
 
@@ -114,7 +114,7 @@ export default function Article({ title, article , tags , image }: Props) {
 
             </WrapperHeader>
             <WrapperBody>
-                <p dangerouslySetInnerHTML={{ __html: !htmlContent }} />
+                <p dangerouslySetInnerHTML={{ __html: htmlContent }} />
             </WrapperBody>
         </WrapperMain>
     )

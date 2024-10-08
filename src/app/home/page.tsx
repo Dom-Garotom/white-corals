@@ -8,7 +8,7 @@ import Footer from "@/components/moleculas/footer";
 import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
 import { useEffect, useState } from "react";
-import {  dataBase } from "@/db";
+import {  dataBase, myDataBase } from "@/db";
 import ButtonTop from "@/components/atomos/buttonTop";
 
 
@@ -76,19 +76,53 @@ const Wrapper = styled.div`
   }
 `
 
-
+type DataBase = {
+    id: string;
+    title: string;
+    article: string;
+    tags: {
+      content: string;
+      color: string;
+    }[];
+    likes: number;
+    comentarios: number;
+    saved: boolean;
+    image?: string;
+  }
 
 
 export default function ArticleHome() {
 
-  const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
-  let dataLocalStorage = [];
-  dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+//   const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+//   let dataLocalStorage = [];
+//   dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
   
- dataBase.map(elemnt => {
-    dataLocalStorage.push(elemnt);
-  })
+//  dataBase.map(elemnt => {
+//     dataLocalStorage.push(elemnt);
+//   })
 
+  const [logsArticle, setLogsArticle] = useState<DataBase[]>([]);
+
+  useEffect(() => {
+    // const locaStorage = localStorage.getItem("article");
+    // const content: DataBase[] = locaStorage ? JSON.parse(locaStorage) : [];
+
+
+    // const localContent = content.map((article) => (({
+    //   id: article.id,
+    //   name: article.title
+    // })))
+
+
+    const db = dataBase;
+
+    const myDb = myDataBase;
+
+    const bancoDeDados = [...myDb ,...db];
+
+    setLogsArticle(bancoDeDados)
+
+  }, [])
 
 
 
@@ -133,7 +167,7 @@ export default function ArticleHome() {
 
         <WrapperArticles>
 
-          { dataLocalStorage.map((article, index) => (
+          { logsArticle.map((article, index) => (
             <ArticlePreview
               key={index}
               id={article.id}

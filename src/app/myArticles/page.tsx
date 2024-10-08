@@ -9,6 +9,7 @@ import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
 import { useEffect, useState } from "react";
 import ButtonTop from "@/components/atomos/buttonTop";
+import { myDataBase } from "@/db";
 
 const WrapperArticleContainer = styled.section`
   width: 100%;
@@ -80,14 +81,15 @@ export default function MyArticles() {
   const [isVisble, setIsVisible] = useState(Boolean);
 
 
-  const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+  // const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
 
-  let dataLocalStorage = [];
+  // let dataLocalStorage = [];
 
-  dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
-  
-  const quantidadeDosArtigos = dataLocalStorage.length;
-  
+  // dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+
+
+  const quantidadeDosArtigos = myDataBase.length;
+  console.log(myDataBase)
 
 
   useEffect(() => {
@@ -129,7 +131,7 @@ export default function MyArticles() {
         </WrapperFilter>
         <WrapperArticles>
 
-          {dataLocalStorage.map((article, index) => (
+          {myDataBase.map((article, index) => (
             <ArticlePreview
               id={article.id}
               key={index}

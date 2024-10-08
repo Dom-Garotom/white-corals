@@ -6,7 +6,7 @@ import Header from "@/components/organismos/header"
 import Article from "@/components/moleculas/article"
 import StatusBar from "@/components/moleculas/statusBar"
 import { useParams } from "next/navigation"
-import { DataBase, dataBase } from "@/db"
+import {  DataBase, dataBase, myDataBase } from "@/db"
 import { useEffect, useState } from "react"
 
 const Wrapper = styled.main`
@@ -65,29 +65,32 @@ const WrapperFilter = styled.div`
 
 export default function ArticlesPage() {
   const { id } = useParams();
-  const [dataArticle, setDataArticle] = useState<DataBase>();
+  const [logsArticle, setLogsArticle] = useState<DataBase[]>([]);
+
+  // const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+
+
+  // let dataLocalStorage = [];
+
+  // dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+  
+  // dataBase.map( elemnt =>{
+  //   dataLocalStorage.push(elemnt);
+  // })
+
 
   useEffect(() => {
-    const getLocalStorage = () => {
+    const db = dataBase;
 
-      const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+    const myDb = myDataBase;
 
-      let dataLocalStorage = [];
+    const bancoDeDados = [...myDb ,...db];
 
-      dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+    setLogsArticle(bancoDeDados)
 
-      dataBase.map(elemnt => {
-        dataLocalStorage.push(elemnt);
-      })
+  }, [])
 
-      const dataArticle = dataLocalStorage.find(element => element.id === id);
-
-      setDataArticle(dataArticle);
-    }
-
-    getLocalStorage();
-
-  })
+  const dataArticle = logsArticle.find( element => element.id === id );
 
   if (!dataArticle) {
     return <p>Article not found</p>;

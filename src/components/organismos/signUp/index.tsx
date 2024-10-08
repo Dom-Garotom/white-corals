@@ -15,6 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { dataBasePerson } from "@/db";
 
 
 
@@ -45,13 +46,13 @@ export default function SignUp() {
 
   const handleInformation: SubmitHandler<Formschema> = (data) => {
 
-    const getUser = localStorage.getItem("user");
-    const users = getUser ? JSON.parse(getUser) : [];
+    // const getUser = localStorage.getItem("user");
+    // const users = getUser ? JSON.parse(getUser) : [];
 
     const newUser = data;
-    users.push(newUser);
+    dataBasePerson.push(newUser);
 
-    localStorage.setItem("user", JSON.stringify(users))
+    // localStorage.setItem("user", JSON.stringify(users))
 
     toast.success("Sua conta foi criada com sucesso");
 
