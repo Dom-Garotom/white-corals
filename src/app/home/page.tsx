@@ -7,8 +7,8 @@ import Header from "@/components/organismos/header";
 import Footer from "@/components/moleculas/footer";
 import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
-import { useEffect,  useState } from "react";
-import { dataBase } from "@/db";
+import { useEffect, useState } from "react";
+import { DataBase, dataBase } from "@/db";
 import ButtonTop from "@/components/atomos/buttonTop";
 
 const WrapperArticleContainer = styled.section`
@@ -78,14 +78,24 @@ const Wrapper = styled.div`
 
 
 export default function ArticleHome() {
-  const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
+  const [data , setData] = useState<DataBase[]>();
 
-  let  dataLocalStorage = [];
+  useEffect(() => {
+    const getLocalStorage = () => {
+      const getLocalStorage = JSON.parse(String(localStorage.getItem("article")));
 
-  dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+      let dataLocalStorage = [];
 
-  dataBase.map( elemnt =>{
-    dataLocalStorage.push(elemnt);
+      dataLocalStorage = Array.isArray(getLocalStorage) ? getLocalStorage : [];
+
+      dataBase.map(elemnt => {
+        dataLocalStorage.push(elemnt);
+      })
+
+      setData(dataLocalStorage)
+    }
+
+    getLocalStorage();
   })
 
 
@@ -123,14 +133,14 @@ export default function ArticleHome() {
       <WrapperArticleContainer>
 
         <WrapperFilter>
-          <div  className="container">
-          {isVisble && <FilterArticles   />}
+          <div className="container">
+            {isVisble && <FilterArticles />}
           </div>
         </WrapperFilter>
 
         <WrapperArticles>
 
-          {dataLocalStorage.map((article, index) => (
+          { data && data.map((article, index) => (
             <ArticlePreview
               key={index}
               id={article.id}
@@ -145,7 +155,7 @@ export default function ArticleHome() {
 
         </WrapperArticles>
 
-        <ButtonTop/>
+        <ButtonTop />
 
       </WrapperArticleContainer>
       <Footer />
