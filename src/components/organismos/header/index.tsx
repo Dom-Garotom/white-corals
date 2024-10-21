@@ -80,7 +80,7 @@ export default function Header() {
 
                 </Wrapper>
             </WrapperContainer>
-            <WrapperMenu block={menuIsVisible}>
+            <WrapperMenu $block={menuIsVisible}>
                 <Link href={'/home'}>Home</Link>
                 <Link href={'/myArticles'}>Meus Artigos</Link>
                 <Link href={'/newPost'}>Publicar artigo</Link>

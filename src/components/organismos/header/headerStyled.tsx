@@ -100,7 +100,7 @@ export const WrapperContainer = styled.div`
 `
 
 type MenuWrapper = {
-    block : boolean;
+    $block : boolean;
 }
 export const WrapperMenu = styled.div<MenuWrapper>`
     width: 100%;
@@ -122,10 +122,10 @@ export const WrapperMenu = styled.div<MenuWrapper>`
         }
     }
 
-    pointer-events: ${(props) => (props.block ? 'auto' : 'none')};
-    display: ${(props) => (props.block ? 'flex' : 'none')};
-    opacity: ${(props) => (props.block ? '1' : '0')};
-    transform: ${(props) => (props.block ? 'translateY(0)' : 'translateY(1rem)')};
+    pointer-events: ${(props) => (props.$block ? 'auto' : 'none')};
+    display: ${(props) => (props.$block ? 'flex' : 'none')};
+    opacity: ${(props) => (props.$block ? '1' : '0')};
+    transform: ${(props) => (props.$block ? 'translateY(0)' : 'translateY(1rem)')};
     transition: opacity 0.20s ease, transform 0.60s ease;
 
 `
