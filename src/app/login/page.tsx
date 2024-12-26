@@ -5,6 +5,7 @@ import BackGround from "@/public/backGround-login.png"
 import InfoEvent from "@/components/moleculas/infoEvent";
 import Login from "@/components/organismos/login";
 import { Toaster } from "sonner";
+import { useAuthRedirect } from "@/hooks/useAuthRedirect";
 
 
 const WrapperMain = styled.main`
@@ -23,18 +24,17 @@ const WrapperMain = styled.main`
   @media screen and (max-width: 800px) {
     flex-direction: column;
   }
-
-
-
 `
 
-const Wrapper = styled.body`
+const Wrapper = styled.div`
   footer{
     margin: 0px;
   }
 `
 
 export default function LoginPage() {
+  useAuthRedirect();
+
   return (
     <Wrapper>
       <WrapperMain>
@@ -46,8 +46,7 @@ export default function LoginPage() {
             fontSize: "1.2rem",
             color: "green",
           }
-        }
-        }/>
+        }} />
       </WrapperMain>
       <Footer />
     </Wrapper>

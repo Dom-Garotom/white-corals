@@ -5,6 +5,8 @@ import BackGround from "@/public/backGround-login.png"
 import InfoEvent from "@/components/moleculas/infoEvent";
 import SignUp from "@/components/organismos/signUp";
 import { Toaster } from "sonner";
+import { useAuthRedirect } from "@/hooks/useAuthRedirect";
+
 const WrapperMain = styled.main`
   background-image: url(${BackGround.src});
   background-size: cover;
@@ -24,28 +26,29 @@ const WrapperMain = styled.main`
 
 `
 
-const Wrapper = styled.body`
+const Wrapper = styled.div`
   footer{
     margin: 0;
   }
 `
 
 export default function SignUpPage() {
+  useAuthRedirect();
+
   return (
     <Wrapper>
       <WrapperMain>
-        <InfoEvent/>
-        <SignUp/>
+        <InfoEvent />
+        <SignUp />
         <Toaster toastOptions={{
-          style : {
-            padding : "10px",
+          style: {
+            padding: "10px",
             fontSize: "1.2rem",
             color: "green",
-          }}
-        }/>
-
+          }
+        }} />
       </WrapperMain>
-      <Footer/>
+      <Footer />
     </Wrapper>
   );
 
