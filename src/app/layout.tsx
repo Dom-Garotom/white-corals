@@ -1,6 +1,7 @@
 "use client"
 import { ReactNode } from "react";
 import { GlobalStyles } from "@/styles/globalStyles";
+import StyledComponentsRegistry from "@/components/atomos/StyledComponentsRegistry";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -10,8 +11,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link href="/logo-corais.png" type="image/png"  rel="icon"/>
       </head>
       <body>
-        <GlobalStyles />
-        {children}
+        <StyledComponentsRegistry>
+          <GlobalStyles />
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
