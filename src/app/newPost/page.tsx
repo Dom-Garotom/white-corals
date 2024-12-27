@@ -11,7 +11,7 @@ import { useState } from "react";
 import { myDataBase } from "@/db";
 import { Wrapper } from "./style";
 import { ArticleSchema, ArticleTags } from "@/types/articleSchema";
-import TagsList from "@/components/atomos/tagsList";
+import TagsList from "@/components/atomos/articleTags";
 import { getRandomHexColor } from "@/utils/getRandomColors";
 
 

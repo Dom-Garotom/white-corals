@@ -1,6 +1,7 @@
 "use client";
 
 import ItemLogArticles from "@/components/atomos/itemLogArticles";
+import { DashBoardArticle } from "@/types/dashboardTypes";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -64,10 +65,7 @@ const WrapperBody = styled.div`
 `;
 
 type props = {
-  logs: {
-    id: string,
-    name: string,
-  }[];
+  logs: DashBoardArticle[]
 }
 
 export default function LogsArticles({ logs }: props) {

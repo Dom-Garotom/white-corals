@@ -1,6 +1,7 @@
 "use client";
 
 import ItemLog from "@/components/atomos/itemLog";
+import { DashBoardPerson } from "@/types/dashboardTypes";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -68,11 +69,7 @@ const WrapperBody = styled.div`
 `;
 
 type props = {
-  logs: {
-    email: string,
-    name: string,
-    status: boolean
-  }[];
+  logs: DashBoardPerson[]
 }
 
 export default function LogsSubscribes({ logs }: props) {
