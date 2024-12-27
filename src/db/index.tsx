@@ -1,16 +1,4 @@
-export type DataBase ={
-    id: string;
-    title: string;
-    article: string;
-    tags: {
-        content: string;
-        color: string;
-    }[];
-    likes: number;
-    comentarios: number;
-    saved: boolean;
-    image?: string;
-}
+import { DataBaseArticle } from "@/types/DataBaseArticle"
 
 export type DataBasePerson ={
   "nome": string,
@@ -18,7 +6,7 @@ export type DataBasePerson ={
   "aceptEmail": boolean
 }
 
-export const dataBase : DataBase[] = [
+export const dataBase : DataBaseArticle[] = [
   {
     "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
     "title": "Causas do Branqueamento de Corais",
@@ -497,4 +485,4 @@ export const dataBasePerson : DataBasePerson[] = [
 ]
 
 
-export const myDataBase : DataBase[] = []
+export const myDataBase : DataBaseArticle[] = []

@@ -76,7 +76,7 @@ export default function SignUp() {
         label="Seu Nome"
         register={register("nome")}
         InputError={errors.nome && true}
-        mensageError={errors.nome}
+        mensageError={errors.nome?.message}
       />
 
 
@@ -86,7 +86,7 @@ export default function SignUp() {
         type="email"
         register={register("email")}
         InputError={errors.email && true}
-        mensageError={errors.email}
+        mensageError={errors.email?.message}
       />
 
       <InputDefault
@@ -95,7 +95,7 @@ export default function SignUp() {
         type="password"
         register={register("senha")}
         InputError={errors.senha && true}
-        mensageError={errors.senha}
+        mensageError={errors.senha?.message}
       />
 
       <WrapperMarkBox>

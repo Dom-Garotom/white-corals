@@ -23,7 +23,7 @@ type propsArticles = {
     color ?: string; 
 }
 
-export const TagsArticles = styled.p<propsArticles>`
+export const ArticleTag = styled.p<propsArticles>`
     font-weight: 700;
     font-size: 1rem;
     color:#878A92;

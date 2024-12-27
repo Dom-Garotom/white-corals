@@ -5,14 +5,15 @@ import Header from "@/components/organismos/header"
 import Article from "@/components/moleculas/article"
 import StatusBar from "@/components/moleculas/statusBar"
 import { useParams } from "next/navigation"
-import {  DataBase, dataBase, myDataBase } from "@/db"
+import {  dataBase, myDataBase } from "@/db"
 import {  useEffect, useState } from "react"
 import { Wrapper } from "./style"
+import { DataBaseArticle } from "@/types/DataBaseArticle"
 
 
 export default function ArticlesPage() {
   const { id } = useParams();
-  const [articleData, setArticleData ] = useState<DataBase>();
+  const [articleData, setArticleData ] = useState<DataBaseArticle>();
 
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function ArticlesPage() {
 
     const myArticles  = myDataBase;
 
-    const currentArticlesDataBase : DataBase[] = [...articlesDataBase ,...myArticles];
+    const currentArticlesDataBase : DataBaseArticle[] = [...articlesDataBase ,...myArticles];
 
     const article = currentArticlesDataBase.find( element => element.id === id );
 

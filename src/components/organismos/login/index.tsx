@@ -126,7 +126,7 @@ export default function Login() {
         type="email"
         register={register("email", { required: true })}
         InputError={errors.email && true}
-        mensageError={errors.email}
+        mensageError={errors.email?.message}
         icon={<MdEmail />}
       />
 
@@ -135,7 +135,7 @@ export default function Login() {
         type="password"
         register={register("senha")}
         InputError={errors.senha && true}
-        mensageError={errors.senha}
+        mensageError={errors.senha?.message}
         icon={<FaLock />}
       />
 

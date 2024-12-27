@@ -1,4 +1,4 @@
-import { TagsArticles } from "@/styles/styledComponents"
+import { ArticleTag } from "@/styles/styledComponents"
 import Image from "next/image"
 import { marked } from "marked"
 import { useEffect, useState } from "react"
@@ -33,11 +33,11 @@ export default function Article({ title, article , tags , image }: Props) {
 
                 <div>
                     {tags?.map(( Element , index) =>(
-                        <TagsArticles 
+                        <ArticleTag 
                         color={Element.color}
                         key={index}>
                             {Element.content}
-                        </TagsArticles>
+                        </ArticleTag>
                     ))}
                 </div>
 

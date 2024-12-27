@@ -1,7 +1,7 @@
 import ComentStatus from "@/components/atomos/comentStatus"
 import LikeStatus from "@/components/atomos/likeStatus"
 import SaveStatus from "@/components/atomos/saveStatus"
-import { TagsArticles, TitleDefault } from "@/styles/styledComponents"
+import { ArticleTag , TitleDefault } from "@/styles/styledComponents"
 import Image from "next/image"
 import Link from "next/link"
 import styled from "styled-components"
@@ -103,11 +103,11 @@ export default function ArticlePreview({ title, tags, likes, comentarios, saved,
 
                 <WrapperTags>
                     {tags.map((tag, index) => ((
-                        <TagsArticles
+                        <ArticleTag
                             key={index}
                             color={tag.color}>
                             {tag.content}
-                        </TagsArticles>
+                        </ArticleTag>
                     )))}
                 </WrapperTags>
 
