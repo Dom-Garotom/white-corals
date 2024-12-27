@@ -5,7 +5,6 @@ import BackGround from "@/public/backGround-login.png"
 import InfoEvent from "@/components/moleculas/infoEvent";
 import Login from "@/components/organismos/login";
 import { Toaster } from "sonner";
-import { useAuthRedirect } from "@/hooks/useAuthRedirect";
 
 
 const WrapperMain = styled.main`
@@ -33,7 +32,6 @@ const Wrapper = styled.div`
 `
 
 export default function LoginPage() {
-  useAuthRedirect();
 
   return (
     <Wrapper>
