@@ -13,7 +13,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { cookies } from "next/headers";
 
 const Wrapper = styled.form`
   display: flex;
@@ -92,25 +91,23 @@ export default function Login() {
   });
 
 
-  const handleinformation: SubmitHandler<FormSchema> = async (data) => {
+  const handleinformation: SubmitHandler<FormSchema> = (data) => {
     console.log(data);
 
     const getUser = localStorage.getItem("user");
     const users : FormSchema[] = getUser ? JSON.parse(getUser) : [];
     const user = users.find(user => user.email === data.email && user.senha === data.senha);
 
-    if (!user) {
+    if (user) {
+      const token = self.crypto.randomUUID();
+      document.cookie = `authToken=${token}; path=/; secure; samesite=strict`;
+
+      toast.success("Login bem-sucedido");
+      router.push('/home');
+    } else {
       toast.error("Seu email ou senha estão incorretos");
     }
     
-    const token = self.crypto.randomUUID();
-    
-    const cookieStore = await cookies()
-    await cookieStore.set("authToken" , token);
-    
-    
-    toast.success("Login bem-sucedido");
-    router.push('/home');
   }
 
 
