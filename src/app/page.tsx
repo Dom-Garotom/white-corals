@@ -5,7 +5,7 @@ import BackGround from "@/public/backGround-login.png"
 import InfoEvent from "@/components/moleculas/infoEvent";
 import SignUp from "@/components/organismos/signUp";
 import { Toaster } from "sonner";
-import { useAuthRedirect } from "@/hooks/useAuthRedirect";
+
 
 const WrapperMain = styled.main`
   background-image: url(${BackGround.src});
@@ -32,8 +32,9 @@ const Wrapper = styled.div`
   }
 `
 
-export default function SignUpPage() {
-  useAuthRedirect();
+
+
+export default function SignUpPage( ) {
 
   return (
     <Wrapper>
