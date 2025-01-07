@@ -7,37 +7,28 @@ import Footer from "@/components/moleculas/footer";
 import { TitleDefault } from "@/styles/styledComponents";
 import FilterArticles from "@/components/moleculas/filter";
 import { useEffect, useState } from "react";
-import { dataBase, myDataBase } from "@/db";
 import ButtonTop from "@/components/atomos/buttonTop";
 import { Wrapper } from "./style";
-import { DataBaseArticle } from "@/types/DataBaseArticle";
+import { useFetchArticle } from "@/hooks/useFetchArticle";
+import { Article } from "@/types/aticle";
 
 
 export default function ArticleHome() {
-  const [articlesRender, setArticlesRender] = useState<DataBaseArticle[]>([]);
+  const { data } = useFetchArticle<Article[]>("/articles")
   const [isVisble, setIsVisible] = useState(Boolean);
 
-  useEffect(() => {
-    const DataBaseArticles = dataBase;
-    const userArticles = myDataBase;
-    const articles = [...DataBaseArticles, ...userArticles];
+  const handleScrool = () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scroll = (100 * scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
 
-    setArticlesRender(articles)
-  }, [])
-
-
-  useEffect(() => {
-    const handleScrool = () => {
-      const scrollTop = document.documentElement.scrollTop;
-      const scroll = (100 * scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)
-
-      if (scroll > 25) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    if (scroll > 25) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
     }
+  }
 
+  useEffect(() => {
     window.addEventListener("scroll", handleScrool);
     return () => {
       window.removeEventListener("scroll", handleScrool)
@@ -59,22 +50,20 @@ export default function ArticleHome() {
 
         <Wrapper.Filter>
           <div className="container">
-            {isVisble && <FilterArticles />}
+            {isVisble && data ? <FilterArticles /> : null}
           </div>
         </Wrapper.Filter>
 
         <Wrapper.Articles>
 
-          {articlesRender.map((article, index) => (
+          {data?.map((article, index) => (
             <ArticlePreview
               key={index}
               id={article.id}
               title={article.title}
               tags={article.tags}
-              likes={article.likes}
-              comentarios={article.comentarios}
-              saved={article.saved}
-              img={article.image && article.image}
+              likes={article.num_likes}
+              comentarios={article.num_comments}
             />
           ))}
 
