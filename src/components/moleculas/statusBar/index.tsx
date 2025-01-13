@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
@@ -7,24 +6,8 @@ import { FaPlus } from "react-icons/fa";
 import { AiOutlineComment } from "react-icons/ai";
 import StatusDefault from "@/components/atomos/statusDefault";
 import { useRouter } from "next/navigation";
+import { Wrapper } from "./style";
 
-const Wrapper = styled.div`
-  width: 70px;
-  min-height: 250px;
-  max-height: 310px;
-  height: 100%;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-
-  @media screen and (max-width: 1000px) {
-    display: flex;
-    width: 100%;
-    height: 70px;
-    justify-content: space-around;
-  }
-`
 
 type Props = {
     likes: number;
