@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Wrapper } from "./style";
 
 type RootFilterProps = {
-    children : ReactNode
+    children ?: ReactNode
 }
 
 function Filter ( {children } : RootFilterProps ) {
