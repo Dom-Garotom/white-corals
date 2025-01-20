@@ -1,65 +1,76 @@
 "use client"
 
-import Footer from "@/components/moleculas/footer"
-import Header from "@/components/organismos/header"
 import Article from "@/components/moleculas/article"
 import StatusBar from "@/components/moleculas/statusBar"
 import { useParams } from "next/navigation"
-import {  dataBase, myDataBase } from "@/db"
-import {  useEffect, useState } from "react"
-import { Wrapper } from "./style"
-import { DataBaseArticle } from "@/types/DataBaseArticle"
+import { useArticle } from "@/hooks/useArticle"
+import BaseLayout from "@/components/layout/baseLayout"
+import { useEffect, useState } from "react"
+import { Article as TypeArticle } from "@/types/aticle"
+import { ArtiSphereApi } from "@/services/api/artisphere"
 
 
 export default function ArticlesPage() {
   const { id } = useParams();
-  const [articleData, setArticleData ] = useState<DataBaseArticle>();
 
+  const [articleCurrent, setArticleCurrent] = useState<TypeArticle>()
+  const [Loading, setLoading] = useState(true)
+  const { articleData } = useArticle();
+
+  const handleArticle = () => {
+    return articleData.find(article => article.id === id);
+  }
+
+  const fetchArticleById = async (id: string | string[]) => {
+    try {
+      const { data } = await ArtiSphereApi.get(`/articles/${id}`);
+      const articleResponse: TypeArticle[] = JSON.parse(data);
+      return articleResponse[0];
+    } catch (error) {
+      console.log("Infelizmente não foi possível realizar a requisição")
+      console.log("Erro : " + error)
+    }
+  }
 
   useEffect(() => {
-    const articlesDataBase = dataBase;
 
-    const myArticles  = myDataBase;
+    const findArticleData = async () => {
+      let article = handleArticle();
 
-    const currentArticlesDataBase : DataBaseArticle[] = [...articlesDataBase ,...myArticles];
+      if (!article) {
+        article = await fetchArticleById(id);
+      }
 
-    const article = currentArticlesDataBase.find( element => element.id === id );
+      setArticleCurrent(article);
+      setLoading(false);
+    }
 
-    setArticleData(article);
-  } , [])
+    findArticleData();
+
+  }, [id, articleData])
 
 
-  if (!articleData) {
-    return <h2>🌀 Loading...</h2>;;
+  if (Loading) {
+    return <h2>🌀 Loading...</h2>;
+  }
+
+  if (!articleCurrent) {
+    return <h2>❌ Artigo não encontrado...</h2>;
   }
 
   return (
-    <Wrapper.root>
-      <Header />
-
-      <Wrapper.ArticleContainer>
-
-        <Wrapper.FilterBar>
-          <div className="container">
-            <StatusBar likes={articleData.likes} comentarios={articleData.comentarios} />
-          </div>
-        </Wrapper.FilterBar>
-
-        <Wrapper.Article>
-
-          <Article
-            id={articleData.id}
-            image={articleData.image}
-            article={articleData.article}
-            title={articleData.title}
-            tags={articleData.tags}
-          />
-
-        </Wrapper.Article>
-
-      </Wrapper.ArticleContainer>
-
-      <Footer />
-    </Wrapper.root>
+    <BaseLayout
+      filter={
+        <StatusBar likes={articleCurrent.num_likes} comentarios={articleCurrent.num_comments} />
+      }
+    >
+      <Article
+        id={articleCurrent.id}
+        image={articleCurrent.imageUrl}
+        article={articleCurrent.article}
+        title={articleCurrent.title}
+        tags={articleCurrent.tags}
+      />
+    </BaseLayout>
   )
 }
