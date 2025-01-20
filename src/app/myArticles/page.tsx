@@ -51,7 +51,7 @@ export default function MyArticles() {
       <Wrapper.ArticleContainer>
 
         <Wrapper.Filter>
-          {isVisble && quantidadeDosArtigos > 7 ? <FilterArticles /> : ""}
+          {isVisble && quantidadeDosArtigos > 7 && <FilterArticles />}
         </Wrapper.Filter>
 
         <Wrapper.Articles>
